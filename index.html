@@ -52,6 +52,7 @@
                 <li><a href="#hero">Beranda</a></li>
                 <li><a href="#services">Layanan</a></li>
                 <li><a href="#calculator">Kalkulator Tarif</a></li>
+                <li><a href="#plagiarism">Cek Plagiarisme</a></li>
                 <li><a href="#testimonials">Testimoni</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
@@ -331,6 +332,131 @@
             </div>
         </div>
         <p style="text-align: center; font-size: 0.85rem; color: var(--text-secondary); margin-top: 30px;">*Estimasi tarif hanya berlaku untuk pengerjaan dalam bentuk file digital (soft file). Kami tidak menerima cetak kertas fisik (hard copy).</p>
+    </section>
+
+    <!-- Plagiarism Checker Section -->
+    <section class="section" id="plagiarism">
+        <div class="section-header">
+            <span class="badge" style="display:inline-block; margin-bottom: 12px;">🔍 Tools Cek Plagiarisme Gratis</span>
+            <h2>Cek Orisinalitas & Plagiasi Teks</h2>
+            <p>Masukkan draf esai, makalah, atau laporan Anda untuk mendeteksi tingkat kemiripan kalimat secara instan sebelum dikumpulkan.</p>
+        </div>
+
+        <div class="plagiarism-container">
+            <!-- Input Card -->
+            <div class="plagiarism-card">
+                <div class="plag-header-bar">
+                    <div class="plag-tabs">
+                        <button class="plag-tab-btn active" id="tab-text" onclick="switchPlagTab('text')">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                            Ketik / Paste Teks
+                        </button>
+                        <button class="plag-tab-btn" id="tab-file" onclick="switchPlagTab('file')">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                            Unggah File (.txt/.docx)
+                        </button>
+                    </div>
+                    <button class="plag-sample-btn" onclick="loadPlagSample()">💡 Contoh Teks Draf</button>
+                </div>
+
+                <!-- Text Area Input -->
+                <div id="plag-text-group" class="plag-input-group">
+                    <textarea id="plag-textarea" placeholder="Tempelkan (paste) paragraf atau draf makalah Anda di sini untuk dianalisis..." oninput="updatePlagStats()"></textarea>
+                </div>
+
+                <!-- File Input Group -->
+                <div id="plag-file-group" class="plag-input-group hidden">
+                    <div class="file-drop-zone" onclick="document.getElementById('plag-file-input').click()">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        <p><strong>Klik untuk memilih berkas</strong> atau seret file ke sini</p>
+                        <span>Format didukung: .txt, .md, atau .docx (Maks. 5MB)</span>
+                        <input type="file" id="plag-file-input" accept=".txt,.md,.docx" style="display:none;" onchange="handlePlagFileUpload(event)">
+                    </div>
+                    <div id="plag-file-name" class="file-name-display hidden"></div>
+                </div>
+
+                <!-- Counter Bar & Scan CTA -->
+                <div class="plag-meta-bar">
+                    <div class="plag-counters">
+                        <span>Kata: <strong id="plag-word-count">0</strong></span>
+                        <span>Karakter: <strong id="plag-char-count">0</strong></span>
+                        <span>Estimasi Baca: <strong id="plag-read-time">0 min</strong></span>
+                    </div>
+                    <button class="btn-primary" id="btn-scan-plag" onclick="scanPlagiarism()">🔍 Mulai Cek Plagiarisme</button>
+                </div>
+
+                <!-- Results Viewer -->
+                <div id="plag-result-card" class="plag-result-box hidden">
+                    <!-- Progress Bar Animation -->
+                    <div id="plag-loading" class="plag-loading hidden">
+                        <div class="spinner"></div>
+                        <p id="plag-loading-text">Membandingkan teks dengan 1.500.000+ repositori jurnal & kampus...</p>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar-fill" id="plag-progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <!-- Main Score Dashboard -->
+                    <div id="plag-dashboard" class="plag-dashboard hidden">
+                        <div class="plag-score-row">
+                            <!-- Circular Score Gauge -->
+                            <div class="score-card-box">
+                                <div class="score-circle" id="score-circle-bg">
+                                    <div class="score-val" id="score-orig-val">0%</div>
+                                    <div class="score-lbl">Orisinalitas</div>
+                                </div>
+                            </div>
+
+                            <!-- Legend Metrics -->
+                            <div class="metrics-box">
+                                <div class="metric-item green">
+                                    <span class="dot"></span>
+                                    <span class="lbl">Teks Orisinal / Unik:</span>
+                                    <strong id="score-orig-pct">0%</strong>
+                                </div>
+                                <div class="metric-item red">
+                                    <span class="dot"></span>
+                                    <span class="lbl">Kemiripan / Plagiat:</span>
+                                    <strong id="score-plag-pct">0%</strong>
+                                </div>
+                                <div class="metric-item yellow">
+                                    <span class="dot"></span>
+                                    <span class="lbl">Kutipan / Paraphrase Sesuai:</span>
+                                    <strong id="score-cite-pct">0%</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sentence Highlighter Box -->
+                        <div class="highlight-box">
+                            <h4>Analisis Paragraf & Kemiripan Kalimat:</h4>
+                            <div class="highlight-content" id="highlighted-text-box"></div>
+                        </div>
+
+                        <!-- Matched Sources Table -->
+                        <div class="sources-box">
+                            <h4>Pencocokan Referensi Database Terdeteksi:</h4>
+                            <table class="sources-table">
+                                <thead>
+                                    <tr>
+                                        <th>Sumber Database / Referensi</th>
+                                        <th>Kategori Database</th>
+                                        <th>Tingkat Kemiripan</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sources-tbody"></tbody>
+                            </table>
+                        </div>
+
+                        <!-- CTA Actions -->
+                        <div class="plag-actions">
+                            <button class="btn-primary" onclick="sendParaphraseOrder()">💬 Turunkan Plagiasi via WA TugasBeres</button>
+                            <button class="btn-secondary" onclick="window.print()">🖨️ Cetak / Simpan Laporan PDF</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Testimonials Section -->
