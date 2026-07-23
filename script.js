@@ -51,11 +51,11 @@ function updateCalc() {
             qtySlider.value = "5";
         }
     } else if (serviceVal === 'proposal') {
-        qtyLabel.innerText = "Jumlah Halaman Proposal";
-        if (qtySlider.max !== "50" || qtySlider.min !== "5") {
+        qtyLabel.innerText = "Jumlah Halaman Proposal / Skripsi";
+        if (qtySlider.max !== "100" || qtySlider.min !== "5") {
             qtySlider.min = "5";
-            qtySlider.max = "50";
-            qtySlider.value = "10";
+            qtySlider.max = "100";
+            qtySlider.value = "15";
         }
     } else if (serviceVal === 'esai') {
         qtyLabel.innerText = "Jumlah Halaman Esai";
