@@ -1,0 +1,24 @@
+{
+  "name": "TugasBeres - Jasa Joki Tugas Profesional",
+  "short_name": "TugasBeres",
+  "description": "Bantuan pengerjaan tugas sekolah, kuliah, proposal skripsi, SPSS, PPT, & e-modul.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#8b5cf6",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "preview-image.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "preview-image.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
