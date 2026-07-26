@@ -332,12 +332,32 @@ function escapeHtml(str) {
               .replace(/'/g, "&#039;");
 }
 
+let lastScanTime = 0;
+const SCAN_COOLDOWN_MS = 3000;
+
 function handlePlagFileUpload(event) {
     const file = event.target.files[0];
     if (!file) return;
 
+    // Security Check 1: Max file size 5MB
+    const MAX_SIZE_BYTES = 5 * 1024 * 1024;
+    if (file.size > MAX_SIZE_BYTES) {
+        alert("🔒 Keamanan Sistem: Ukuran berkas terlalu besar. Maksimal ukuran file adalah 5MB.");
+        event.target.value = "";
+        return;
+    }
+
+    // Security Check 2: Reject executable/script extensions
+    const ext = file.name.split('.').pop().toLowerCase();
+    const FORBIDDEN_EXTENSIONS = ['exe', 'php', 'js', 'sh', 'py', 'bat', 'vbs', 'html', 'htm', 'jar', 'apk', 'bin', 'svg'];
+    if (FORBIDDEN_EXTENSIONS.includes(ext)) {
+        alert(`🔒 Keamanan Sistem: Format file .${ext} ditolak demi alasan keamanan sistem.`);
+        event.target.value = "";
+        return;
+    }
+
     const display = document.getElementById('plag-file-name');
-    display.innerText = "📄 File Terpilih: " + file.name + " (" + (file.size / 1024).toFixed(1) + " KB)";
+    display.innerText = "📄 File Terpilih: " + escapeHtml(file.name) + " (" + (file.size / 1024).toFixed(1) + " KB)";
     display.classList.remove('hidden');
 
     const reader = new FileReader();
@@ -345,7 +365,6 @@ function handlePlagFileUpload(event) {
         let rawContent = e.target.result || "";
         
         // Check if file is binary (e.g. .docx, .doc, .pdf)
-        const ext = file.name.split('.').pop().toLowerCase();
         if (['docx', 'doc', 'pdf'].includes(ext)) {
             // Clean binary garbage characters and XML tags
             let extractedText = rawContent.replace(/<[^>]+>/g, ' ')
@@ -354,7 +373,7 @@ function handlePlagFileUpload(event) {
                                           .trim();
             
             if (extractedText.length < 30) {
-                extractedText = `Teks Draf dari file ${file.name}:\n\nPendidikan Agama Islam (PAI) dan Pendidikan Guru Sekolah Dasar (PGSD) memegang peranan penting dalam membangun karakter peserta didik. Menurut penelitian terbaru, integrasi metode pembelajaran berbasis masalah (Problem Based Learning) dapat meningkatkan literasi sains dan kemampuan berpikir kritis siswa hingga 85%. Namun, tantangan utama dalam implementasi media e-modul interaktif adalah kesiapan sarana digital dan kompetensi guru di daerah perdesaan. Oleh karena itu, diperlukan pendampingan intensif serta pengembangan bahan ajar yang inovatif dan terstruktur.`;
+                extractedText = `Teks Draf dari file ${escapeHtml(file.name)}:\n\nPendidikan Agama Islam (PAI) dan Pendidikan Guru Sekolah Dasar (PGSD) memegang peranan penting dalam membangun karakter peserta didik. Menurut penelitian terbaru, integrasi metode pembelajaran berbasis masalah (Problem Based Learning) dapat meningkatkan literasi sains dan kemampuan berpikir kritis siswa hingga 85%. Namun, tantangan utama dalam implementasi media e-modul interaktif adalah kesiapan sarana digital dan kompetensi guru di daerah perdesaan. Oleh karena itu, diperlukan pendampingan intensif serta pengembangan bahan ajar yang inovatif dan terstruktur.`;
             }
             document.getElementById('plag-textarea').value = extractedText;
         } else {
@@ -368,6 +387,14 @@ function handlePlagFileUpload(event) {
 let lastPlagScanText = "";
 
 function scanPlagiarism() {
+    // Security Check 3: Rate Limiting & Cooldown Protection
+    const now = Date.now();
+    if (now - lastScanTime < SCAN_COOLDOWN_MS) {
+        alert("🔒 Keamanan Sistem: Mohon tunggu 3 detik sebelum melakukan cek plagiarisme ulang.");
+        return;
+    }
+    lastScanTime = now;
+
     const text = document.getElementById('plag-textarea').value.trim();
     if (text.length < 30) {
         alert("Mohon masukkan draf teks minimal 10-15 kata untuk melakukan cek plagiarisme.");
