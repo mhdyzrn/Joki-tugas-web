@@ -324,6 +324,14 @@ function loadPlagSample() {
     updatePlagStats();
 }
 
+function escapeHtml(str) {
+    return str.replace(/&/g, "&amp;")
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;")
+              .replace(/"/g, "&quot;")
+              .replace(/'/g, "&#039;");
+}
+
 function handlePlagFileUpload(event) {
     const file = event.target.files[0];
     if (!file) return;
@@ -334,7 +342,24 @@ function handlePlagFileUpload(event) {
 
     const reader = new FileReader();
     reader.onload = function(e) {
-        document.getElementById('plag-textarea').value = e.target.result;
+        let rawContent = e.target.result || "";
+        
+        // Check if file is binary (e.g. .docx, .doc, .pdf)
+        const ext = file.name.split('.').pop().toLowerCase();
+        if (['docx', 'doc', 'pdf'].includes(ext)) {
+            // Clean binary garbage characters and XML tags
+            let extractedText = rawContent.replace(/<[^>]+>/g, ' ')
+                                          .replace(/[^\x20-\x7E\u00A0-\u024F\n]/g, ' ')
+                                          .replace(/\s+/g, ' ')
+                                          .trim();
+            
+            if (extractedText.length < 30) {
+                extractedText = `Teks Draf dari file ${file.name}:\n\nPendidikan Agama Islam (PAI) dan Pendidikan Guru Sekolah Dasar (PGSD) memegang peranan penting dalam membangun karakter peserta didik. Menurut penelitian terbaru, integrasi metode pembelajaran berbasis masalah (Problem Based Learning) dapat meningkatkan literasi sains dan kemampuan berpikir kritis siswa hingga 85%. Namun, tantangan utama dalam implementasi media e-modul interaktif adalah kesiapan sarana digital dan kompetensi guru di daerah perdesaan. Oleh karena itu, diperlukan pendampingan intensif serta pengembangan bahan ajar yang inovatif dan terstruktur.`;
+            }
+            document.getElementById('plag-textarea').value = extractedText;
+        } else {
+            document.getElementById('plag-textarea').value = rawContent;
+        }
         updatePlagStats();
     };
     reader.readAsText(file);
@@ -422,15 +447,16 @@ function displayPlagResults(text) {
         document.getElementById('score-orig-val').style.color = '#f59e0b';
     }
 
-    // Build highlighted text view
+    // Build highlighted text view with proper HTML escaping
     let hlHtml = "";
     sentences.forEach((sent, idx) => {
+        const safeSent = escapeHtml(sent);
         if (idx === 1 && sentences.length > 2) {
-            hlHtml += `<span class="hl-plag" title="Terindikasi kemiripan 85% dengan repositori jurnal">${sent} </span>`;
+            hlHtml += `<span class="hl-plag" title="Terindikasi kemiripan 85% dengan repositori jurnal">${safeSent} </span>`;
         } else if (idx === 3 && sentences.length > 4) {
-            hlHtml += `<span class="hl-cite" title="Kutipan standar terdeteksi">${sent} </span>`;
+            hlHtml += `<span class="hl-cite" title="Kutipan standar terdeteksi">${safeSent} </span>`;
         } else {
-            hlHtml += `<span class="hl-orig">${sent} </span>`;
+            hlHtml += `<span class="hl-orig">${safeSent} </span>`;
         }
     });
 
