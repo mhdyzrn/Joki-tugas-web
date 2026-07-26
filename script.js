@@ -485,6 +485,21 @@ function sendParaphraseOrder() {
     window.open(url, '_blank');
 }
 
+// Mobile Hamburger Menu Handlers
+function toggleMobileMenu() {
+    const nav = document.getElementById('main-nav');
+    if (nav) {
+        nav.classList.toggle('mobile-active');
+    }
+}
+
+function closeMobileMenu() {
+    const nav = document.getElementById('main-nav');
+    if (nav) {
+        nav.classList.remove('mobile-active');
+    }
+}
+
 // Mobile Bottom Nav Active Switcher
 document.addEventListener('DOMContentLoaded', () => {
     const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
