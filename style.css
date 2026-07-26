@@ -210,7 +210,7 @@ nav ul li a:hover {
 .nav-btn {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     padding: 10px 22px;
-    border-radius: 50px;
+    border-radius: 12px;
     color: #fff;
     text-decoration: none;
     font-weight: 600;
@@ -243,7 +243,7 @@ nav ul li a:hover {
 .badge {
     display: inline-block;
     padding: 6px 16px;
-    border-radius: 50px;
+    border-radius: 12px;
     background: rgba(139, 92, 246, 0.1);
     border: 1px solid rgba(139, 92, 246, 0.2);
     color: #a78bfa;
@@ -284,7 +284,7 @@ nav ul li a:hover {
     background: transparent;
     border: 1px solid var(--secondary-btn-border);
     padding: 14px 28px;
-    border-radius: 50px;
+    border-radius: 12px;
     color: var(--text-primary);
     text-decoration: none;
     font-weight: 600;
@@ -299,7 +299,7 @@ nav ul li a:hover {
 .btn-primary {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     padding: 15px 32px;
-    border-radius: 50px;
+    border-radius: 12px;
     color: #fff;
     text-decoration: none;
     font-weight: 700;
@@ -412,7 +412,7 @@ nav ul li a:hover {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     padding: 12px 24px;
-    border-radius: 50px;
+    border-radius: 12px;
     color: var(--text-secondary);
     cursor: pointer;
     font-family: var(--font-main);
