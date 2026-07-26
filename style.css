@@ -844,8 +844,15 @@ footer {
     gap: 20px;
 }
 
-/* Responsive Breakpoints */
+/* Responsive Breakpoints & Mobile Typography Boost */
 @media (max-width: 900px) {
+    html {
+        font-size: 16px !important;
+    }
+    body {
+        font-size: 1rem !important;
+        line-height: 1.6;
+    }
     header {
         padding: 15px 5%;
         flex-wrap: wrap;
@@ -854,7 +861,7 @@ footer {
     .hero {
         flex-direction: column;
         text-align: center;
-        padding-top: 100px;
+        padding-top: 90px;
         padding-bottom: 40px;
     }
     .hero-content {
@@ -864,12 +871,13 @@ footer {
         align-items: center;
     }
     .hero-content h1 {
-        font-size: 2.2rem;
+        font-size: 2.2rem !important;
         line-height: 1.3;
     }
     .hero-content p {
         max-width: 100%;
-        font-size: 0.95rem;
+        font-size: 1.05rem !important;
+        line-height: 1.6;
     }
     .hero-img-container {
         max-width: 100%;
@@ -887,6 +895,51 @@ footer {
         flex-direction: column;
         gap: 20px;
         text-align: center;
+    }
+    .section-header h2 {
+        font-size: 1.8rem !important;
+    }
+    .section-header p {
+        font-size: 1.0rem !important;
+    }
+    .service-card h3 {
+        font-size: 1.3rem !important;
+    }
+    .service-card p {
+        font-size: 1.0rem !important;
+    }
+    .service-features li {
+        font-size: 0.95rem !important;
+    }
+    .price-tag {
+        font-size: 1.7rem !important;
+    }
+    .price-tag span {
+        font-size: 0.95rem !important;
+    }
+    .input-group label {
+        font-size: 1.05rem !important;
+    }
+    .input-group select, .input-group input[type="text"] {
+        font-size: 1.0rem !important;
+        padding: 14px 16px !important;
+    }
+    .btn-primary, .btn-secondary {
+        font-size: 1.05rem !important;
+        padding: 16px 24px !important;
+    }
+    .total-val {
+        font-size: 2.4rem !important;
+    }
+    .summary-item {
+        font-size: 1.0rem !important;
+    }
+    .faq-header h3 {
+        font-size: 1.1rem !important;
+    }
+    .faq-content p {
+        font-size: 1.0rem !important;
+        line-height: 1.6;
     }
 }
 
@@ -911,7 +964,7 @@ footer {
         gap: 15px;
     }
     nav ul li a {
-        font-size: 0.85rem;
+        font-size: 0.9rem !important;
     }
     .hero-buttons {
         flex-direction: column;
@@ -922,7 +975,7 @@ footer {
         text-align: center;
     }
     .section {
-        padding: 45px 4%;
+        padding: 40px 4%;
     }
     .plag-header-bar {
         flex-direction: column;
@@ -935,6 +988,7 @@ footer {
     .plag-tab-btn {
         flex: 1;
         justify-content: center;
+        font-size: 1.0rem !important;
     }
     .plag-actions {
         flex-direction: column;
