@@ -1374,6 +1374,15 @@ footer {
     font-weight: 600;
 }
 
+#btn-scan-plag {
+    border-radius: 12px !important;
+    padding: 14px 28px !important;
+    font-size: 1.0rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.2px;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.25);
+}
+
 .plag-actions {
     display: flex;
     gap: 15px;
@@ -1384,6 +1393,7 @@ footer {
     flex: 1;
     padding: 14px;
     font-size: 0.95rem;
+    border-radius: 12px !important;
 }
 
 /* Mobile Bottom Navigation Bar */
