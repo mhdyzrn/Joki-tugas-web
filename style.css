@@ -892,43 +892,8 @@ footer {
         align-items: center !important;
         height: 60px !important;
     }
-    .hamburger-btn {
-        display: flex !important;
-    }
     header nav {
-        display: block !important;
-        position: fixed;
-        top: 60px;
-        left: 0;
-        right: 0;
-        background: var(--header-bg);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--header-border);
-        padding: 0 20px;
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-    }
-    header nav.mobile-active {
-        max-height: 450px;
-        opacity: 1;
-        visibility: visible;
-        padding: 20px;
-    }
-    header nav ul {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-    }
-    header nav ul li a {
-        font-size: 1.05rem !important;
-        font-weight: 600;
-        display: block;
-        padding: 8px;
+        display: none !important; /* Mobile exclusively uses Bottom Nav Bar */
     }
     .header-actions {
         display: flex;
