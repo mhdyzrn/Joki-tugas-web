@@ -853,16 +853,37 @@ footer {
         font-size: 1rem !important;
         line-height: 1.6;
     }
+    .promo-bar {
+        font-size: 0.8rem !important;
+        padding: 8px 12px !important;
+        text-align: center;
+        white-space: normal !important;
+        line-height: 1.4;
+    }
     header {
-        padding: 15px 5%;
-        flex-wrap: wrap;
-        gap: 12px;
+        padding: 12px 4% !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        height: 60px !important;
+    }
+    header nav {
+        display: none !important; /* Mobile uses Bottom Nav Bar */
+    }
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    #nav-cta-btn {
+        padding: 8px 14px !important;
+        font-size: 0.85rem !important;
     }
     .hero {
         flex-direction: column;
         text-align: center;
-        padding-top: 90px;
-        padding-bottom: 40px;
+        padding-top: 80px;
+        padding-bottom: 30px;
     }
     .hero-content {
         max-width: 100%;
@@ -945,26 +966,7 @@ footer {
 
 @media (max-width: 600px) {
     header {
-        padding: 12px 4%;
-        justify-content: space-between;
-    }
-    nav {
-        order: 3;
-        width: 100%;
-        overflow-x: auto;
-        white-space: nowrap;
-        padding-bottom: 5px;
-        scrollbar-width: none;
-    }
-    nav::-webkit-scrollbar {
-        display: none;
-    }
-    nav ul {
-        display: flex;
-        gap: 15px;
-    }
-    nav ul li a {
-        font-size: 0.9rem !important;
+        padding: 10px 4% !important;
     }
     .hero-buttons {
         flex-direction: column;
