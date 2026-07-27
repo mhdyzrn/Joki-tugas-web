@@ -5,518 +5,326 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Jasa Joki Tugas Profesional - Solusi Cepat & Terpercaya untuk Tugas Anda</title>
     <meta name="description" content="Jasa pengerjaan tugas kuliah, sekolah dasar, makalah, proposal penelitian, analisis data SPSS, PPT presentasi, dan e-modul. Profesional, rapi, cepat, dan terpercaya. Hitung tarif otomatis dan pesan langsung!">
-    <meta name="keywords" content="joki tugas, jasa tugas, analisis SPSS, tulis esai, tugas kuliah, tugas PGMI, evaluasi pembelajaran, buat modul, proposal penelitian, buat makalah, ppt presentasi">
     
-    <!-- Open Graph / Facebook / WhatsApp / Telegram -->
+    <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tugas-beres.netlify.app/">
     <meta property="og:title" content="Jasa Joki Tugas Profesional - Solusi Cepat & Terpercaya untuk Tugas Anda">
-    <meta property="og:description" content="Jasa pengerjaan tugas kuliah, sekolah dasar, makalah, proposal penelitian, analisis data SPSS, PPT presentasi, dan e-modul. Profesional, rapi, cepat, dan terpercaya.">
-    <meta property="og:image" content="https://tugas-beres.netlify.app/preview-image.jpg">
-    <meta property="og:image:type" content="image/jpeg">
-    <meta property="og:image:width" content="1024">
-    <meta property="og:image:height" content="466">
-
-    <!-- Twitter / X -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://tugas-beres.netlify.app/">
-    <meta property="twitter:title" content="Jasa Joki Tugas Profesional - Solusi Cepat & Terpercaya untuk Tugas Anda">
-    <meta property="twitter:description" content="Jasa pengerjaan tugas kuliah, sekolah dasar, makalah, proposal penelitian, analisis data SPSS, PPT presentasi, dan e-modul. Profesional, rapi, cepat, dan terpercaya.">
-    <meta property="twitter:image" content="https://tugas-beres.netlify.app/preview-image.jpg">
+    <meta property="og:description" content="Jasa pengerjaan tugas kuliah, makalah, proposal, analisis data SPSS, PPT presentasi, dan e-modul. Profesional, rapi, cepat, dan terpercaya.">
     
-    <!-- PWA & Mobile Web Meta Tags -->
     <meta name="theme-color" content="#8b5cf6">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="manifest" href="manifest.json">
 
-    <!-- Link to style.css with Cache-Buster -->
-    <link rel="stylesheet" href="style.css?v=11.0">
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css?v=13.0">
 </head>
 <body>
 
-    <!-- Top Announcement Promo Bar -->
-    <div class="promo-bar">
-        <span>🎉 PROMO PELANGGAN BARU: Diskon 10% untuk Pemesanan Pertama! Centang kotak di kalkulator tarif.</span>
-    </div>
-
-    <!-- Dynamic Background Blobs -->
-    <div class="bg-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
-
-    <!-- Header / Navigation Bar -->
+    <!-- Header / Navbar -->
     <header>
         <div class="logo">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-color);"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
             TugasBeres
         </div>
         <nav id="main-nav">
             <ul>
-                <li><a href="#hero" onclick="closeMobileMenu()">Beranda</a></li>
-                <li><a href="#services" onclick="closeMobileMenu()">Layanan</a></li>
-                <li><a href="#calculator" onclick="closeMobileMenu()">Kalkulator Tarif</a></li>
-                <li><a href="#payment" onclick="closeMobileMenu()">Pembayaran QRIS</a></li>
-                <li><a href="#plagiarism" onclick="closeMobileMenu()">Cek Plagiarisme</a></li>
-                <li><a href="#testimonials" onclick="closeMobileMenu()">Testimoni</a></li>
-                <li><a href="#faq" onclick="closeMobileMenu()">FAQ</a></li>
+                <li><a href="#hero">Beranda</a></li>
+                <li><a href="#services">Layanan</a></li>
+                <li><a href="#calculator">Tarif</a></li>
+                <li><a href="#payment">Pembayaran QRIS</a></li>
+                <li><a href="#plagiarism">Cek Plagiasi</a></li>
             </ul>
         </nav>
         <div class="header-actions">
-            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
-                <!-- Moon icon (shows in light theme to switch to dark) -->
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme" style="background:none; border:none; cursor:pointer; color:inherit;">
+                <!-- Moon icon -->
                 <svg id="theme-toggle-dark-icon" class="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                <!-- Sun icon (shows in dark theme to switch to light) -->
+                <!-- Sun icon -->
                 <svg id="theme-toggle-light-icon" class="theme-icon hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
             </button>
             <a href="https://wa.me/6282279765039?text=Halo%20TugasBeres,%20saya%20ingin%20tanya%20jasa%20tugas." target="_blank" class="nav-btn" id="nav-cta-btn">Hubungi WA</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (Flux Style) -->
     <section class="hero" id="hero">
         <div class="hero-content">
-            <span class="badge">🚀 Solusi Cepat Akademik Anda</span>
-            <h1>Tugas Menumpuk? <br>Biar <span>Kami yang Selesaikan!</span></h1>
-            <p>Bantuan pengerjaan tugas sekolah, kuliah, proposal penelitian, olah data statistik SPSS, penulisan makalah, PPT presentasi, hingga e-modul pembelajaran dengan kualitas orisinal, bebas plagiasi, dan tepat waktu. <br><span style="font-size: 0.9rem; color: var(--text-secondary); display: block; margin-top: 10px;">*Layanan berupa berkas digital (soft file), tidak termasuk cetak kertas fisik/hard copy.</span></p>
+            <span class="label">Solusi Cepat Akademik Anda</span>
+            <h1>Tugas Menumpuk? <br>Biar <span class="text-gradient text-emphasize">Kami yang Selesaikan!</span></h1>
+            <p>Bantuan pengerjaan tugas sekolah, kuliah, proposal, hingga olah data statistik dengan kualitas orisinal, bebas plagiasi, dan tepat waktu.</p>
             <div class="hero-buttons">
-                <a href="#calculator" class="btn-primary">Hitung Tarif Sekarang</a>
+                <a href="#calculator" class="btn-primary">Hitung Tarif</a>
                 <a href="#services" class="btn-secondary">Lihat Layanan</a>
             </div>
         </div>
-        <div class="hero-img-container">
-            <div class="hero-card">
-                <div class="hero-card-badge">📊 Tugas Lengkap Ready</div>
-                <div class="quote-icon" style="position:static; margin:20px 0; font-size:4rem;">🎓</div>
-                <h3>Kualitas Terjamin</h3>
-                <p>Seluruh pengerjaan dikerjakan oleh tim ahli lulusan PTN terbaik, didukung data akurat dan bebas plagiasi.</p>
-                <div class="rating" style="justify-content:center; margin-bottom:0;">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        <div class="hero-image">
+            <img src="preview-image.jpg" alt="Ilustrasi Tugas Beres" style="object-fit: cover; width:100%; height:100%; min-height:400px;">
+        </div>
+    </section>
+
+    <!-- Process / Cara Kerja Section (Tabs adapted as cards for simplicity) -->
+    <section class="section background-light" id="process">
+        <div class="container">
+            <div style="text-align:center; margin-bottom: 4rem;">
+                <span class="label">Alur Pemesanan</span>
+                <h2>Cara Kerja <span class="text-gradient text-emphasize">Tugas Beres</span></h2>
+                <p>3 langkah mudah untuk menyelesaikan beban tugas Anda.</p>
+            </div>
+            <div class="services-list" style="grid-template-columns: repeat(3, 1fr); gap:2rem;">
+                <div class="service-card" style="text-align:center;">
+                    <h1 class="text-gradient" style="font-size:4rem; margin-bottom:0;">01</h1>
+                    <h3>Pesan & Konsultasi</h3>
+                    <p>Hitung tarif melalui kalkulator lalu hubungi admin via WhatsApp untuk detail tugas.</p>
+                </div>
+                <div class="service-card" style="text-align:center;">
+                    <h1 class="text-gradient" style="font-size:4rem; margin-bottom:0;">02</h1>
+                    <h3>Pengerjaan Cepat</h3>
+                    <p>Tugas Anda akan dikerjakan oleh tim ahli sesuai tenggat waktu (deadline) yang dipilih.</p>
+                </div>
+                <div class="service-card" style="text-align:center;">
+                    <h1 class="text-gradient" style="font-size:4rem; margin-bottom:0;">03</h1>
+                    <h3>Selesai & Lunas</h3>
+                    <p>Hasil tugas dikirimkan setelah pelunasan. Revisi jika diperlukan tanpa biaya tambahan.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="section" id="services">
-        <div class="section-header">
-            <h2>Layanan Lengkap Kami</h2>
-            <p>Pilih kategori layanan akademik yang sesuai dengan kebutuhan tugas Anda untuk melihat detail penawaran.</p>
-        </div>
-
-        <!-- Service Tab Buttons -->
-        <div class="tabs-container">
-            <button class="tab-btn active" onclick="switchTab('all')">Semua Layanan</button>
-            <button class="tab-btn" onclick="switchTab('tulis')">Karya Tulis (Makalah/Proposal)</button>
-            <button class="tab-btn" onclick="switchTab('spss')">Olah Data & SPSS</button>
-            <button class="tab-btn" onclick="switchTab('media')">Desain & Media (PPT/Modul)</button>
-        </div>
-
-        <!-- Services Grid -->
-        <div class="services-grid" id="services-grid">
-            
-            <!-- Card 1: Makalah & Paper -->
-            <div class="service-card" data-category="tulis">
-                <div class="service-icon">📝</div>
-                <h3>Makalah & Paper</h3>
-                <p>Penyusunan makalah ilmiah sistematis, tugas mandiri, review jurnal, dan paper akademik untuk tingkat sekolah maupun kuliah.</p>
-                <ul class="service-features">
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Referensi Buku & Jurnal</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Format Rapi & Terstruktur</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Bebas Plagiasi</li>
-                </ul>
-                <div class="price-tag"><span>Mulai </span>Rp 3.000 <span>/ Halaman</span></div>
+    <section class="section background-soft" id="services">
+        <div class="container">
+            <div class="services-grid" id="services-grid">
+                <div class="services-intro" style="position: sticky; top: 120px; align-self: start;">
+                    <span class="label">Layanan Kami</span>
+                    <h2>Kami menawarkan <span class="text-gradient text-emphasize">solusi spesifik</span> untuk kebutuhan Anda.</h2>
+                    <p>Dari makalah sederhana hingga analisis data kompleks, kami siap membantu dengan standar tinggi dan anti-plagiasi.</p>
+                    <br>
+                    <a href="#calculator" class="btn-primary">Pesan Sekarang</a>
+                </div>
+                <div class="services-list">
+                    <div class="service-card">
+                        <div class="service-icon">📄</div>
+                        <h3>Makalah & Esai</h3>
+                        <p>Penulisan rapi, terstruktur, dan didukung referensi jurnal terpercaya.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📊</div>
+                        <h3>Analisis Data (SPSS)</h3>
+                        <p>Olah data statistik, uji validitas, reliabilitas, hingga regresi linear.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📖</div>
+                        <h3>E-Modul & PPT</h3>
+                        <p>Desain presentasi menarik dan modul pembelajaran interaktif.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🔍</div>
+                        <h3>Parafrase & Proofread</h3>
+                        <p>Bebas plagiasi (Turnitin), tata bahasa EYD/PUEBI yang sempurna.</p>
+                    </div>
+                </div>
             </div>
-
-            <!-- Card 2: Proposal Skripsi & Tugas Akhir -->
-            <div class="service-card" data-category="tulis">
-                <div class="service-icon">🎓</div>
-                <h3>Proposal & Skripsi</h3>
-                <p>Penyusunan draf proposal skripsi (Bab 1-3) hingga tugas akhir lengkap (Bab 1-5), metodologi kualitatif/kuantitatif, kajian pustaka, dan garansi revisi.</p>
-                <ul class="service-features">
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Proposal (Bab 1-3) & Skripsi (Bab 1-5)</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Metode Kualitatif / Kuantitatif / PTK</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Bebas Plagiasi & Garansi Bantuan Revisi</li>
-                </ul>
-                <div class="price-tag"><span>Mulai </span>Rp 8.000 <span>/ Halaman</span></div>
-            </div>
-
-            <!-- Card 3: Esai Ilmiah & Opini -->
-            <div class="service-card" data-category="tulis">
-                <div class="service-icon">✍️</div>
-                <h3>Esai Ilmiah & Opini</h3>
-                <p>Penulisan esai kritis akademis, esai opini populer, esai reflektif, atau naskah kompetisi esai dengan argumen tajam.</p>
-                <ul class="service-features">
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Gagasan Kreatif & Orisinal</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Sitasi APA 7th / Harvard</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Hasil Turnitin Rendah</li>
-                </ul>
-                <div class="price-tag"><span>Mulai </span>Rp 6.000 <span>/ Halaman</span></div>
-            </div>
-
-            <!-- Card 4: Analisis Data SPSS & Statistik -->
-            <div class="service-card" data-category="spss">
-                <div class="service-icon">📊</div>
-                <h3>Analisis Data SPSS</h3>
-                <p>Olah data statistik, uji instrumen (Validitas & Reliabilitas), uji asumsi klasik, analisis korelasi, regresi, t-test, anova, dll.</p>
-                <ul class="service-features">
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> File Data & Output SPSS</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Interpretasi & Pembahasan</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Garansi Hasil Akurat</li>
-                </ul>
-                <div class="price-tag"><span>Mulai </span>Rp 15.000 <span>/ Paket Uji</span></div>
-            </div>
-
-            <!-- Card 5: Slide Presentasi PPT -->
-            <div class="service-card" data-category="media">
-                <div class="service-icon">💻</div>
-                <h3>Slide Presentasi PPT</h3>
-                <p>Desain slide presentasi Powerpoint, Google Slides, atau Canva premium dengan visualisasi data, infografis, dan layout estetik.</p>
-                <ul class="service-features">
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Desain Kustom Non-Template</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Infografis & Visual Menarik</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Format File PPTX & PDF</li>
-                </ul>
-                <div class="price-tag"><span>Mulai </span>Rp 3.000 <span>/ Slide</span></div>
-            </div>
-
-            <!-- Card 6: E-Modul & LKS -->
-            <div class="service-card" data-category="media">
-                <div class="service-icon">📖</div>
-                <h3>E-Modul & LKS</h3>
-                <p>Desain modul ajar digital, Lembar Kerja Siswa (LKS), ringkasan bahan ajar sekolah dasar hingga menengah dengan tata letak profesional.</p>
-                <ul class="service-features">
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Layout Desain Premium</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> File PDF & E-Book Ready</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Menyesuaikan KD/Kurikulum</li>
-                </ul>
-                <div class="price-tag"><span>Mulai </span>Rp 3.000 <span>/ Halaman</span></div>
-            </div>
-
-            <!-- Card 7: Laporan Praktikum / KKN -->
-            <div class="service-card" data-category="tulis">
-                <div class="service-icon">🔬</div>
-                <h3>Laporan Praktikum / KKN</h3>
-                <p>Penyusunan laporan akhir kegiatan KKN, KKL, magang kerja, atau laporan praktikum laboratorium sains/teknik.</p>
-                <ul class="service-features">
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Struktur Laporan Rapi</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Lampiran Data Teratur</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Bebas Revisi Format</li>
-                </ul>
-                <div class="price-tag"><span>Mulai </span>Rp 6.000 <span>/ Halaman</span></div>
-            </div>
-
-            <!-- Card 8: Evaluasi Akhir Semester (EAS / UAS) -->
-            <div class="service-card" data-category="tulis">
-                <div class="service-icon">🎓</div>
-                <h3>Evaluasi Akhir Semester (EAS)</h3>
-                <p>Bantuan penyusunan jawaban ujian take-home, tugas proyek akhir semester, naskah evaluasi, dan esai ujian UAS/EAS.</p>
-                <ul class="service-features">
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Sesuai Kisi-Kisi & Soal</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Analisis Kritis & Terstruktur</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Ketepatan Waktu Tinggi</li>
-                </ul>
-                <div class="price-tag"><span>Mulai </span>Rp 8.000 <span>/ Halaman</span></div>
-            </div>
-
-            <!-- Card 9: Rencana Pelaksanaan Pembelajaran (RPP) -->
-            <div class="service-card" data-category="media">
-                <div class="service-icon">📋</div>
-                <h3>RPP & Modul Ajar</h3>
-                <p>Penyusunan Rencana Pelaksanaan Pembelajaran (RPP) K13 atau Modul Ajar Kurikulum Merdeka lengkap dengan skenario dan penilaian.</p>
-                <ul class="service-features">
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Kurikulum K13 / Merdeka</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Skenario Kegiatan Lengkap</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Kisi-Kisi Instrumen Penilaian</li>
-                </ul>
-                <div class="price-tag"><span>Mulai </span>Rp 5.000 <span>/ Halaman</span></div>
-            </div>
-
-            <!-- Card 10: Resume & Ringkasan -->
-            <div class="service-card" data-category="tulis">
-                <div class="service-icon">🗒️</div>
-                <h3>Resume & Ringkasan</h3>
-                <p>Jasa meringkas materi kuliah, bab buku, ringkasan jurnal ilmiah, naskah video, atau artikel secara padat, jelas, dan terstruktur.</p>
-                <ul class="service-features">
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Poin Penting & Intisari</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Bahasa Rapi & Padat</li>
-                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Format Terstruktur</li>
-                </ul>
-                <div class="price-tag"><span>Mulai </span>Rp 3.000 <span>/ Halaman</span></div>
-            </div>
-
         </div>
     </section>
 
     <!-- Calculator Section -->
-    <section class="section" id="calculator">
-        <div class="section-header">
-            <h2>Kalkulator Estimasi Tarif</h2>
-            <p>Sesuaikan jenis tugas, volume pengerjaan, dan tenggat waktu Anda untuk mendapatkan perkiraan harga secara transparan.</p>
-        </div>
-
-        <div class="calc-container">
-            <div class="calc-inputs">
-                <!-- Select Service -->
-                <div class="input-group">
-                    <label for="service-select">Pilih Jenis Layanan</label>
-                    <select id="service-select" onchange="updateCalc()">
-                        <option value="makalah" data-rate="3000" data-unit="Halaman">Makalah & Paper (per Halaman)</option>
-                        <option value="proposal" data-rate="8000" data-unit="Halaman">Proposal Skripsi & Tugas Akhir (per Halaman)</option>
-                        <option value="esai" data-rate="6000" data-unit="Halaman">Esai Ilmiah & Opini (per Halaman)</option>
-                        <option value="spss" data-rate="15000" data-unit="Paket Uji">Analisis Data SPSS / Statistik (per Paket Uji)</option>
-                        <option value="ppt" data-rate="3000" data-unit="Slide">Slide Presentasi PPT (per Slide)</option>
-                        <option value="modul" data-rate="3000" data-unit="Halaman">E-Modul & LKS (per Halaman)</option>
-                        <option value="laporan" data-rate="6000" data-unit="Halaman">Laporan Praktikum / KKN (per Halaman)</option>
-                        <option value="eas" data-rate="8000" data-unit="Halaman">Evaluasi Akhir Semester / EAS / UAS (per Halaman)</option>
-                        <option value="rpp" data-rate="5000" data-unit="Halaman">RPP / Modul Ajar Kurikulum Merdeka (per Halaman)</option>
-                        <option value="resume" data-rate="3000" data-unit="Halaman">Resume / Ringkasan Buku atau Jurnal (per Halaman)</option>
-                    </select>
-                </div>
-
-                <!-- Slider Quantity -->
-                <div class="input-group">
-                    <label for="qty-slider" id="qty-label">Jumlah Halaman</label>
-                    <div class="range-container">
-                        <input type="range" id="qty-slider" min="1" max="50" value="5" class="range-slider" oninput="updateCalc()">
-                        <span class="range-val" id="qty-val">5</span>
-                    </div>
-                </div>
-
-                <!-- Select Deadline -->
-                <div class="input-group">
-                    <label for="deadline-select">Tenggat Waktu Pengerjaan</label>
-                    <select id="deadline-select" onchange="updateCalc()">
-                        <option value="normal" data-multiplier="1.0">Normal (3-5 Hari)</option>
-                        <option value="cepat" data-multiplier="1.25">Cepat (1-2 Hari) (+25%)</option>
-                        <option value="kilat" data-multiplier="1.5">Sangat Cepat / Kilat (<24 Jam) (+50%)</option>
-                        <option value="santai" data-multiplier="0.9">Santai (>5 Hari) (Diskon 10%)</option>
-                    </select>
-                </div>
-
-                <!-- Custom Note -->
-                <div class="input-group">
-                    <label for="subject-input">Mata Kuliah / Topik Tugas</label>
-                    <input type="text" id="subject-input" placeholder="Contoh: Proposal Penelitian Kualitatif PGMI" oninput="updateCalc()">
-                </div>
-
-                <!-- Promo Checkbox -->
-                <div class="input-group-checkbox" style="display: flex; align-items: center; gap: 10px; margin-top: 15px; margin-bottom: 25px;">
-                    <input type="checkbox" id="promo-checkbox" onchange="updateCalc()" style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--primary-color);">
-                    <label for="promo-checkbox" style="margin-bottom: 0; cursor: pointer; font-size: 0.95rem; font-weight: 600; color: var(--text-primary);">Saya Pelanggan Baru (Diskon 10%)</label>
-                </div>
+    <section class="section background-light" id="calculator">
+        <div class="container">
+            <div style="text-align:center; margin-bottom: 3rem;">
+                <span class="label">Estimasi Transparan</span>
+                <h2>Kalkulator <span class="text-gradient text-emphasize">Tarif Otomatis</span></h2>
+                <p>Hitung sendiri biaya jasa sesuai kebutuhan tugas Anda secara real-time.</p>
             </div>
+            
+            <div class="calc-card">
+                <div class="calc-grid">
+                    <div>
+                        <div class="input-group">
+                            <label>Jenis Layanan</label>
+                            <select id="service-select" onchange="updateCalc()">
+                                <option value="15000">Makalah & Paper (Rp15k/hal)</option>
+                                <option value="20000">Proposal Penelitian (Rp20k/hal)</option>
+                                <option value="25000">Analisis Data SPSS (Rp25k/hal)</option>
+                                <option value="10000">PPT Presentasi (Rp10k/slide)</option>
+                                <option value="12000">E-Modul (Rp12k/hal)</option>
+                                <option value="5000">Parafrase (Rp5k/hal)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label id="qty-label">Jumlah Halaman</label>
+                            <input type="range" id="qty-slider" min="1" max="50" value="5" class="range-slider" oninput="updateCalc()">
+                            <div style="text-align:right; margin-top:5px; font-weight:600; color:var(--primary-color)"><span id="qty-val">5</span></div>
+                        </div>
 
-            <!-- Summary Display Card -->
-            <div class="calc-summary">
-                <div>
-                    <h3 class="summary-title">Detail Pesanan</h3>
-                    <div class="summary-item">
-                        <span>Layanan:</span>
-                        <span id="sum-service">Makalah & Paper</span>
+                        <div class="input-group">
+                            <label>Deadline (Waktu Pengerjaan)</label>
+                            <select id="deadline-select" onchange="updateCalc()">
+                                <option value="1">Normal (3-5 Hari) - Harga Normal</option>
+                                <option value="1.5">Express (2 Hari) - Tambah 50%</option>
+                                <option value="2">Kilat (24 Jam) - Harga 2x Lipat</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="summary-item">
-                        <span>Volume:</span>
-                        <span id="sum-qty">5 Halaman</span>
+
+                    <div>
+                        <div class="input-group">
+                            <label>Mata Kuliah / Topik Tugas</label>
+                            <input type="text" id="subject-input" placeholder="Contoh: Metodologi Penelitian PGMI" oninput="updateCalc()">
+                        </div>
+
+                        <div class="input-group" style="display:flex; gap:10px; align-items:center; background:var(--bg-soft); padding:15px; border-radius:12px; border:1px solid #e5e7eb;">
+                            <input type="checkbox" id="promo-checkbox" onchange="updateCalc()" style="width:20px; height:20px; accent-color: var(--primary-color);">
+                            <label for="promo-checkbox" style="margin:0; cursor:pointer;">Pakai Diskon 10% (Pelanggan Baru)</label>
+                        </div>
+
+                        <div class="total-box" style="box-shadow:var(--shadow-soft);">
+                            <div style="font-size:0.9rem; color:var(--text-gray); margin-bottom:10px;">
+                                <span id="sum-service">Makalah & Paper</span> • 
+                                <span id="sum-qty">5 Halaman</span> • 
+                                <span id="sum-deadline">Normal</span>
+                            </div>
+                            <div style="font-weight:600; margin-bottom:15px;" id="sum-subject">-</div>
+                            <div class="total-val text-gradient" id="total-price">Rp 15.000</div>
+                            <a href="#" class="btn-primary" style="width:100%; margin-top:20px; text-align:center;" id="whatsapp-order-btn">Pesan via WhatsApp</a>
+                        </div>
                     </div>
-                    <div class="summary-item">
-                        <span>Waktu:</span>
-                        <span id="sum-deadline">Normal</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Topik:</span>
-                        <span id="sum-subject">-</span>
-                    </div>
-                </div>
-
-                <div class="summary-total">
-                    <div class="total-label">Estimasi Total Harga:</div>
-                    <div class="total-val" id="total-price">Rp 15.000</div>
-                    <button class="btn-primary" style="width: 100%;" onclick="sendOrder()">Pesan Sekarang</button>
-                </div>
-            </div>
-        </div>
-        <p style="text-align: center; font-size: 0.85rem; color: var(--text-secondary); margin-top: 30px;">*Estimasi tarif hanya berlaku untuk pengerjaan dalam bentuk file digital (soft file). Kami tidak menerima cetak kertas fisik (hard copy).</p>
-    </section>
-
-    <!-- Payment Method Section -->
-    <section class="section" id="payment">
-        <div class="section-header">
-            <span class="badge" style="display:inline-block; margin-bottom: 12px; background: rgba(37, 211, 102, 0.15); color: #25D366;">💳 Metode Pembayaran Resmi</span>
-            <h2>Cara Pembayaran via QRIS All Payment</h2>
-            <p>Transaksi aman, transparan, dan terverifikasi otomatis. Mendukung pembayaran DP 50% atau Lunas 100% dari seluruh aplikasi E-Wallet dan Mobile Banking.</p>
-        </div>
-
-        <div class="payment-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; align-items: center; max-width: 1000px; margin: 0 auto;">
-            <!-- QRIS Code Card -->
-            <div class="payment-card" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 30px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                <div style="background: #fff; padding: 15px; border-radius: 16px; display: inline-block; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 20px;">
-                    <img src="qris.jpg" alt="QRIS Muhamad Yusron" style="width: 100%; max-width: 260px; height: auto; border-radius: 12px;">
-                </div>
-                <h3 style="margin-bottom: 5px; color: var(--text-primary);">NMD / Merchant: <strong>MUHAMAD YUSRON</strong></h3>
-                <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 15px;">Dapat di-scan menggunakan GoPay, OVO, DANA, ShopeePay, LinkAja, BCA, BRI, Mandiri, BNI, Seabank, dan seluruh Bank Indonesia.</p>
-                <div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;">
-                    <span style="font-size: 0.75rem; padding: 4px 10px; background: rgba(0,0,0,0.05); border-radius: 6px; color: var(--text-primary);">✓ Bebas Biaya Admin</span>
-                    <span style="font-size: 0.75rem; padding: 4px 10px; background: rgba(0,0,0,0.05); border-radius: 6px; color: var(--text-primary);">✓ Verifikasi Otomatis</span>
-                </div>
-                <!-- Download QRIS Button -->
-                <a href="qris.jpg" download="QRIS_Muhamad_Yusron_TugasBeres.jpg" class="btn-primary" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; text-decoration: none; width: 100%; border-radius: 12px; font-weight: 700;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    Download Gambar QRIS
-                </a>
-            </div>
-
-            <!-- Payment Steps & DP Option Card -->
-            <div class="payment-info" style="display: flex; flex-direction: column; gap: 20px;">
-                <!-- DP Info Card -->
-                <div style="background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(18, 140, 126, 0.05)); border: 1px solid rgba(37, 211, 102, 0.3); border-radius: 16px; padding: 20px;">
-                    <h4 style="color: #25D366; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-                        💡 Apakah Bisa DP (Down Payment) Dulu?
-                    </h4>
-                    <p style="font-size: 0.92rem; color: var(--text-primary); line-height: 1.6;">
-                        <strong>BISA BANGET!</strong> Di TugasBeres Anda bisa memilih sistem pembayaran:
-                    </p>
-                    <ul style="font-size: 0.88rem; color: var(--text-secondary); margin-top: 10px; padding-left: 20px; line-height: 1.6;">
-                        <li><strong>Opsi 1 (Sistem DP 50%)</strong>: Bayar DP 50% di awal sebagai tanda jadi untuk memulai pengerjaan. Pelunasan 50% sisa dilakukan setelah tugas selesai &amp; diperlihatkan hasilnya (preview).</li>
-                        <li><strong>Opsi 2 (Sistem Lunas 100%)</strong>: Pembayaran lunas di awal untuk pengerjaan kilat/instan.</li>
-                    </ul>
-                </div>
-
-                <!-- Steps List -->
-                <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 25px;">
-                    <h4 style="margin-bottom: 15px; color: var(--text-primary);">Alur Pembayaran 4 Langkah:</h4>
-                    <ol style="font-size: 0.9rem; color: var(--text-secondary); padding-left: 20px; display: flex; flex-direction: column; gap: 12px;">
-                        <li><strong>Hitung Tarif / Sepakati Harga</strong>: Gunakan kalkulator tarif di atas atau hubungi admin WhatsApp untuk kesepakatan tugas.</li>
-                        <li><strong>Scan QRIS &amp; Transfer</strong>: Buka aplikasi M-Banking / E-Wallet Anda, scan QRIS <strong>MUHAMAD YUSRON</strong>, lalu masukkan nominal (DP 50% atau Lunas 100%).</li>
-                        <li><strong>Kirim Bukti Pembayaran</strong>: Kirim screenshot/foto bukti transfer ke WhatsApp <code>0822-7976-5039</code>.</li>
-                        <li><strong>Tugas Langsung Dikerjakan</strong>: Tim kami langsung memproses tugas Anda dengan garansi selesai tepat waktu &amp; bebas revisi format!</li>
-                    </ol>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Plagiarism Checker Section -->
-    <section class="section" id="plagiarism">
-        <div class="section-header">
-            <span class="badge" style="display:inline-block; margin-bottom: 12px;">🔍 Tools Cek Plagiarisme Gratis</span>
-            <h2>Cek Orisinalitas & Plagiasi Teks</h2>
-            <p>Masukkan draf esai, makalah, atau laporan Anda untuk mendeteksi tingkat kemiripan kalimat secara instan sebelum dikumpulkan.</p>
-        </div>
+    <!-- Payment Section (QRIS) -->
+    <section class="section background-soft" id="payment">
+        <div class="container">
+            <div style="text-align:center; margin-bottom: 3rem;">
+                <span class="label">Metode Pembayaran Resmi</span>
+                <h2>Scan <span class="text-gradient text-emphasize">QRIS</span> All Payment</h2>
+                <p>Transaksi aman, transparan, dan terverifikasi otomatis. Mendukung DP 50% atau Lunas 100%.</p>
+            </div>
 
-        <div class="plagiarism-container">
-            <!-- Input Card -->
-            <div class="plagiarism-card">
-                <div class="plag-header-bar">
-                    <div class="plag-tabs">
-                        <button class="plag-tab-btn active" id="tab-text" onclick="switchPlagTab('text')">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-                            Ketik / Paste Teks
-                        </button>
-                        <button class="plag-tab-btn" id="tab-file" onclick="switchPlagTab('file')">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                            Unggah File (.txt/.docx)
-                        </button>
+            <div class="services-grid" style="align-items:center;">
+                <!-- QRIS Card -->
+                <div class="service-card" style="text-align:center; border:1px solid #e5e7eb;">
+                    <div style="background: #fff; padding: 15px; border-radius: 16px; display: inline-block; box-shadow: var(--shadow-soft); margin-bottom: 20px;">
+                        <img src="qris.jpg" alt="QRIS Tugas Beres" style="width: 100%; max-width: 260px; height: auto; border-radius: 12px;">
                     </div>
-                    <button class="plag-sample-btn" onclick="loadPlagSample()">💡 Contoh Teks Draf</button>
+                    <h3 style="margin-bottom: 5px;">NMD: <strong>MUHAMAD YUSRON</strong></h3>
+                    <p style="font-size: 0.88rem; margin-bottom: 15px;">Dapat di-scan menggunakan GoPay, OVO, DANA, ShopeePay, dan seluruh M-Banking.</p>
+                    <a href="qris.jpg" download class="btn-secondary" style="width:100%;">Download QRIS</a>
                 </div>
 
-                <!-- Text Area Input -->
-                <div id="plag-text-group" class="plag-input-group">
-                    <textarea id="plag-textarea" placeholder="Tempelkan (paste) paragraf atau draf makalah Anda di sini untuk dianalisis..." oninput="updatePlagStats()"></textarea>
+                <!-- Info Card -->
+                <div style="display:flex; flex-direction:column; gap:20px;">
+                    <div class="service-card" style="background: rgba(37, 211, 102, 0.05); border:1px solid rgba(37, 211, 102, 0.2);">
+                        <h3 style="color:#25D366; font-size:1.2rem;">💡 Apakah Bisa DP Dulu?</h3>
+                        <p style="color:var(--text-dark);"><strong>BISA!</strong> Anda bisa memilih sistem pembayaran:</p>
+                        <ul style="margin-left:20px; margin-top:10px;">
+                            <li><strong>DP 50% di awal</strong> untuk mulai pengerjaan, lunas setelah preview hasil.</li>
+                            <li><strong>Lunas 100%</strong> untuk pengerjaan kilat/instan.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h3 style="font-size:1.2rem;">Alur Pembayaran:</h3>
+                        <ol style="margin-left:20px; margin-top:10px; display:flex; flex-direction:column; gap:10px;">
+                            <li>Hitung Tarif di Kalkulator.</li>
+                            <li>Scan QRIS & Transfer nominal DP/Lunas.</li>
+                            <li>Kirim bukti transfer ke WhatsApp admin.</li>
+                            <li>Tugas langsung dikerjakan!</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plagiarism Section -->
+    <section class="section background-light" id="plagiarism">
+        <div class="container">
+            <div style="text-align:center; margin-bottom: 3rem;">
+                <span class="label">Pengecekan Teks</span>
+                <h2>Cek <span class="text-gradient text-emphasize">Plagiarisme</span> Gratis</h2>
+            </div>
+
+            <div class="calc-card" style="max-width:900px;">
+                <div style="display:flex; gap:10px; margin-bottom:20px;">
+                    <button class="btn-primary" style="padding:10px 20px; font-size:0.9rem;" id="tab-text" onclick="switchPlagTab('text')">Teks Manual</button>
+                    <button class="btn-secondary" style="padding:10px 20px; font-size:0.9rem; border:none; background:transparent;" id="tab-file" onclick="switchPlagTab('file')">Upload File</button>
                 </div>
 
-                <!-- File Input Group -->
-                <div id="plag-file-group" class="plag-input-group hidden">
-                    <div class="file-drop-zone" onclick="document.getElementById('plag-file-input').click()">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                        <p><strong>Klik untuk memilih berkas</strong> atau seret file ke sini</p>
-                        <span>Format didukung: .txt, .md, atau .docx (Maks. 5MB)</span>
+                <div id="plag-text-group">
+                    <textarea id="plag-textarea" rows="8" placeholder="Tempelkan teks makalah/esai Anda di sini..." oninput="updatePlagStats()"></textarea>
+                </div>
+
+                <div id="plag-file-group" class="hidden">
+                    <div style="border: 2px dashed #ccc; padding:60px 40px; text-align:center; border-radius:16px; cursor:pointer; background:var(--bg-soft); transition:var(--transition);" onmouseover="this.style.borderColor='var(--primary-color)'" onmouseout="this.style.borderColor='#ccc'" onclick="document.getElementById('plag-file-input').click()">
+                        <div style="font-size:3rem; margin-bottom:10px;">📁</div>
+                        <p style="font-weight:500;">Klik untuk memilih file dokumen</p>
+                        <p style="font-size:0.85rem; color:var(--text-gray);">Mendukung format .txt, .md, .docx</p>
                         <input type="file" id="plag-file-input" accept=".txt,.md,.docx" style="display:none;" onchange="handlePlagFileUpload(event)">
                     </div>
-                    <div id="plag-file-name" class="file-name-display hidden"></div>
+                    <div id="plag-file-name" style="margin-top:15px; font-weight:600; text-align:center; color:var(--primary-color);" class="hidden"></div>
                 </div>
 
-                <!-- Counter Bar & Scan CTA -->
-                <div class="plag-meta-bar">
-                    <div class="plag-counters">
-                        <span>Kata: <strong id="plag-word-count">0</strong></span>
-                        <span>Karakter: <strong id="plag-char-count">0</strong></span>
-                        <span>Estimasi Baca: <strong id="plag-read-time">0 min</strong></span>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; flex-wrap:wrap; gap:15px; background:var(--bg-soft); padding:15px 20px; border-radius:12px;">
+                    <div style="font-size:0.95rem; color:var(--text-dark);">
+                        Kata: <strong id="plag-word-count">0</strong> <span style="color:#ccc; margin:0 10px;">|</span>
+                        Karakter: <strong id="plag-char-count">0</strong> <span style="color:#ccc; margin:0 10px;">|</span>
+                        Waktu Baca: <strong id="plag-read-time">0 min</strong>
                     </div>
-                    <button class="btn-primary" id="btn-scan-plag" onclick="scanPlagiarism()">🔍 Mulai Cek Plagiarisme</button>
+                    <button class="btn-primary" id="btn-scan-plag" onclick="scanPlagiarism()" style="padding:10px 24px;">🔍 Mulai Cek</button>
                 </div>
 
-                <!-- Results Viewer -->
-                <div id="plag-result-card" class="plag-result-box hidden">
-                    <!-- Progress Bar Animation -->
-                    <div id="plag-loading" class="plag-loading hidden">
-                        <div class="spinner"></div>
-                        <p id="plag-loading-text">Membandingkan teks dengan 1.500.000+ repositori jurnal & kampus...</p>
-                        <div class="progress-bar-wrap">
-                            <div class="progress-bar-fill" id="plag-progress-fill"></div>
+                <!-- Result Box -->
+                <div id="plag-result-card" class="hidden" style="margin-top:40px; border-top:1px solid #e5e7eb; padding-top:40px;">
+                    <div id="plag-loading" class="hidden" style="text-align:center; max-width:400px; margin:0 auto;">
+                        <div style="font-size:2rem; margin-bottom:10px; animation: pulse 1.5s infinite;">⚙️</div>
+                        <p id="plag-loading-text" style="font-weight:500;">Membandingkan dengan 1.500.000+ jurnal...</p>
+                        <div style="width:100%; background:#e5e7eb; height:10px; border-radius:5px; overflow:hidden; margin-top:15px;">
+                            <div id="plag-progress-fill" style="width:0%; height:100%; background:var(--gradient-text); transition:width 0.3s ease;"></div>
                         </div>
                     </div>
 
-                    <!-- Main Score Dashboard -->
-                    <div id="plag-dashboard" class="plag-dashboard hidden">
-                        <div class="plag-score-row">
-                            <!-- Circular Score Gauge -->
-                            <div class="score-card-box">
-                                <div class="score-circle" id="score-circle-bg">
-                                    <div class="score-val" id="score-orig-val">0%</div>
-                                    <div class="score-lbl">Orisinalitas</div>
-                                </div>
+                    <div id="plag-dashboard" class="hidden services-grid" style="gap:2rem;">
+                        <div style="text-align:center; background:var(--bg-soft); padding:30px; border-radius:16px;">
+                            <div id="score-circle-bg" style="width:160px; height:160px; border-radius:50%; border:12px solid var(--primary-color); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:3rem; font-weight:700; font-family:var(--font-heading); color:var(--text-dark); box-shadow:var(--shadow-soft);">
+                                <div id="score-orig-val">0%</div>
                             </div>
-
-                            <!-- Legend Metrics -->
-                            <div class="metrics-box">
-                                <div class="metric-item green">
-                                    <span class="dot"></span>
-                                    <span class="lbl">Teks Orisinal / Unik:</span>
-                                    <strong id="score-orig-pct">0%</strong>
+                            <div style="display:flex; justify-content:space-around; text-align:left; font-size:0.9rem; margin-top:30px;">
+                                <div>
+                                    <div style="color:var(--text-gray);">Orisinalitas</div>
+                                    <strong id="score-orig-pct" style="font-size:1.2rem; color:#10b981;">0%</strong>
                                 </div>
-                                <div class="metric-item red">
-                                    <span class="dot"></span>
-                                    <span class="lbl">Kemiripan / Plagiat:</span>
-                                    <strong id="score-plag-pct">0%</strong>
+                                <div>
+                                    <div style="color:var(--text-gray);">Plagiasi</div>
+                                    <strong id="score-plag-pct" style="font-size:1.2rem; color:#ef4444;">0%</strong>
                                 </div>
-                                <div class="metric-item yellow">
-                                    <span class="dot"></span>
-                                    <span class="lbl">Kutipan / Paraphrase Sesuai:</span>
-                                    <strong id="score-cite-pct">0%</strong>
+                                <div>
+                                    <div style="color:var(--text-gray);">Kutipan</div>
+                                    <strong id="score-cite-pct" style="font-size:1.2rem; color:#3b82f6;">0%</strong>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Sentence Highlighter Box -->
-                        <div class="highlight-box">
-                            <h4>Analisis Paragraf & Kemiripan Kalimat:</h4>
-                            <div class="highlight-content" id="highlighted-text-box"></div>
-                        </div>
-
-                        <!-- Matched Sources Table -->
-                        <div class="sources-box">
-                            <h4>Pencocokan Referensi Database Terdeteksi:</h4>
-                            <table class="sources-table">
-                                <thead>
-                                    <tr>
-                                        <th>Sumber Database / Referensi</th>
-                                        <th>Kategori Database</th>
-                                        <th>Tingkat Kemiripan</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="sources-tbody"></tbody>
-                            </table>
-                        </div>
-
-                        <!-- CTA Actions -->
-                        <div class="plag-actions">
-                            <button class="btn-primary" onclick="sendParaphraseOrder()">💬 Turunkan Plagiasi via WA TugasBeres</button>
-                            <button class="btn-secondary" onclick="window.print()">🖨️ Cetak / Simpan Laporan PDF</button>
+                        <div>
+                            <h4 style="margin-bottom:10px;">Teks Terindikasi Plagiat:</h4>
+                            <div id="highlighted-text-box" style="background:#fff; border:1px solid #e5e7eb; padding:20px; border-radius:12px; max-height:250px; overflow-y:auto; font-size:0.95rem; margin-bottom:20px; line-height:1.7;"></div>
+                            
+                            <h4 style="margin-bottom:10px;">Sumber Kemiripan:</h4>
+                            <div style="overflow-x:auto; background:#fff; border:1px solid #e5e7eb; border-radius:12px;">
+                                <table style="width:100%; text-align:left; font-size:0.9rem; border-collapse:collapse;">
+                                    <thead style="background:var(--bg-soft); border-bottom:1px solid #e5e7eb;">
+                                        <tr>
+                                            <th style="padding:12px 15px;">Sumber (URL/Jurnal)</th>
+                                            <th style="padding:12px 15px; width:100px;">Kemiripan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="sources-tbody"></tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -524,181 +332,52 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="section" id="testimonials">
-        <div class="section-header">
-            <h2>Ulasan Klien Kami</h2>
-            <p>Lihat apa kata mahasiswa dan pelajar yang telah mempercayakan tugas akademik mereka kepada kami.</p>
-        </div>
-
-        <div class="testimonials-grid">
-            <!-- Review 1 -->
-            <div class="testimonial-card">
-                <div class="quote-icon">”</div>
-                <div class="rating">★★★★★</div>
-                <p class="testimonial-text">"Penulisan proposal penelitian Bab 1-3 rapi banget. Metodologinya sangat detail dan dikasih rujukan buku statistika terpercaya. Lolos seminar proposal tanpa banyak revisi!"</p>
-                <div class="client-info">
-                    <div class="client-avatar">AH</div>
+    <!-- Footer (Dark Background) -->
+    <footer class="background-dark section" style="padding: 4rem 2rem 2rem;">
+        <div class="container">
+            <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:3rem; margin-bottom:3rem;">
+                <div style="max-width:400px;">
+                    <div class="logo" style="color:#fff; margin-bottom:1.5rem;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #fff;"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        TugasBeres
+                    </div>
+                    <p style="color:#9ca3af;">Solusi tugas akademik cepat, rapi, dan terpercaya. Mendukung ribuan mahasiswa se-Indonesia.</p>
+                </div>
+                <div style="display:flex; gap:3rem;">
                     <div>
-                        <div class="client-name">Ahmad H.</div>
-                        <div class="client-role">Mahasiswa PGMI</div>
+                        <h4 style="color:#fff; margin-bottom:1.5rem;">Navigasi</h4>
+                        <ul style="list-style:none; display:flex; flex-direction:column; gap:0.75rem;">
+                            <li><a href="#hero" style="color:#9ca3af;">Beranda</a></li>
+                            <li><a href="#services" style="color:#9ca3af;">Layanan</a></li>
+                            <li><a href="#calculator" style="color:#9ca3af;">Kalkulator Tarif</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color:#fff; margin-bottom:1.5rem;">Hubungi Kami</h4>
+                        <ul style="list-style:none; display:flex; flex-direction:column; gap:0.75rem;">
+                            <li><a href="https://wa.me/6282279765039" style="color:#9ca3af;">WhatsApp: 0822-7976-5039</a></li>
+                            <li><a href="mailto:info@tugasberes.com" style="color:#9ca3af;">info@tugasberes.com</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-
-            <!-- Review 2 -->
-            <div class="testimonial-card">
-                <div class="quote-icon">”</div>
-                <div class="rating">★★★★★</div>
-                <p class="testimonial-text">"Uji validitas dan reliabilitas instrumen dengan SPSS dikerjakan dalam waktu kurang dari 12 jam. Keren, dapet penjelasan cara bacanya lagi."</p>
-                <div class="client-info">
-                    <div class="client-avatar">AR</div>
-                    <div>
-                        <div class="client-name">Annisa R.</div>
-                        <div class="client-role">Mahasiswi PGSD</div>
-                    </div>
-                </div>
+            <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:2rem; text-align:center; color:#6b7280; font-size:0.9rem;">
+                <p>&copy; 2026 Tugas Beres. Hak cipta dilindungi.</p>
             </div>
-
-            <!-- Review 3 -->
-            <div class="testimonial-card">
-                <div class="quote-icon">”</div>
-                <div class="rating">★★★★★</div>
-                <p class="testimonial-text">"Desain slide presentasi PPT-nya sangat modern dan estetik. Menjelaskan materi sulit jadi kelihatan gampang karena dikasih visual infografis."</p>
-                <div class="client-info">
-                    <div class="client-avatar">BP</div>
-                    <div>
-                        <div class="client-name">Bagus P.</div>
-                        <div class="client-role">Guru Sekolah Dasar</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="section" id="faq">
-        <div class="section-header">
-            <h2>Pertanyaan Umum (FAQ)</h2>
-            <p>Menjawab hal-hal yang sering ditanyakan oleh calon pengguna jasa pengerjaan tugas kami.</p>
-        </div>
-
-        <div class="faq-container">
-            <!-- FAQ 1 -->
-            <div class="faq-item">
-                <div class="faq-header" onclick="toggleFaq(this)">
-                    <h3>Apakah tugas saya dijamin bebas dari plagiat?</h3>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-content">
-                    <p>Ya. Seluruh tugas tulis, makalah, proposal, dan esai ilmiah dikerjakan dari nol dan melalui proses penelusuran referensi yang ketat. Kami juga menyediakan lampiran hasil cek plagiasi Turnitin secara gratis jika diminta.</p>
-                </div>
-            </div>
-
-            <!-- FAQ 2 -->
-            <div class="faq-item">
-                <div class="faq-header" onclick="toggleFaq(this)">
-                    <h3>Bagaimana jika tugas yang dikerjakan butuh perbaikan (revisi)?</h3>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-content">
-                    <p>Kami memberikan garansi revisi gratis sampai tugas Anda dinyatakan selesai, selama revisi tersebut tidak melenceng dari instruksi pengerjaan awal yang diberikan saat pemesanan.</p>
-                </div>
-            </div>
-
-            <!-- FAQ 3 -->
-            <div class="faq-item">
-                <div class="faq-header" onclick="toggleFaq(this)">
-                    <h3>Bagaimana cara pembayaran jasanya?</h3>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-content">
-                    <p>Kami menerima pembayaran melalui transfer Bank utama (BRI, BNI, BCA, Mandiri) serta berbagai dompet digital seperti ShopeePay, OVO, GoPay, dan Dana. Pembayaran dapat berupa uang muka (DP) terlebih dahulu.</p>
-                </div>
-            </div>
-
-            <!-- FAQ 4 -->
-            <div class="faq-item">
-                <div class="faq-header" onclick="toggleFaq(this)">
-                    <h3>Apakah kerahasiaan data saya terjamin?</h3>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-content">
-                    <p>Tentu saja. Kami menjamin 100% kerahasiaan identitas nama, mata kuliah, maupun institusi asal Anda. File tugas Anda hanya akan dikirimkan kepada Anda secara pribadi.</p>
-                </div>
-            </div>
-
-            <!-- FAQ 5 -->
-            <div class="faq-item">
-                <div class="faq-header" onclick="toggleFaq(this)">
-                    <h3>Apakah hasil tugas dikirim dalam bentuk cetak fisik (hard copy)?</h3>
-                    <span class="faq-icon">+</span>
-                </div>
-                <div class="faq-content">
-                    <p>Tidak. Kami hanya mengirimkan hasil pengerjaan tugas dalam bentuk file digital (soft file) seperti format Word (.docx), PDF, PowerPoint (.pptx), Excel (.xlsx), atau file data (.sav untuk SPSS). Kami tidak melayani pencetakan kertas fisik atau pengiriman berkas cetak fisik.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer>
-        <div class="footer-content">
-            <div>
-                <div class="logo">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                    TugasBeres
-                </div>
-                <p class="footer-desc">Solusi pengerjaan tugas sekolah dan kuliah secara profesional, cepat, aman, dan bergaransi revisi. Kepuasan akademis Anda adalah prioritas kami.</p>
-            </div>
-            <div>
-                <div class="social-links">
-                    <a href="https://wa.me/6282279765039" target="_blank" class="social-icon">WA</a>
-                    <a href="#" class="social-icon">IG</a>
-                    <a href="#" class="social-icon">FB</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>&copy; 2026 TugasBeres. All rights reserved.</span>
-            <span>Made for EAS PGMI & Sekolah Dasar</span>
-        </div>
-        <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--footer-border); text-align: center;">
-            <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #10b981; background: rgba(16, 185, 129, 0.08); padding: 8px 18px; border-radius: 50px; border: 1px solid rgba(16, 185, 129, 0.2);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                🔒 Terenkripsi SSL 256-bit & Jaminan 100% Kerahasiaan Identitas Klien
-            </span>
         </div>
     </footer>
 
-    <!-- Mobile Bottom Navigation Bar -->
-    <div class="mobile-bottom-nav">
-        <a href="#hero" class="mobile-nav-item active">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-            <span>Beranda</span>
-        </a>
-        <a href="#services" class="mobile-nav-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-            <span>Layanan</span>
-        </a>
-        <a href="#calculator" class="mobile-nav-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path></svg>
-            <span>Kalkulator</span>
-        </a>
-        <a href="#payment" class="mobile-nav-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
-            <span>QRIS</span>
-        </a>
-        <a href="#plagiarism" class="mobile-nav-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            <span>Plagiasi</span>
-        </a>
-    </div>
-
-    <!-- Supabase Database SDK & Integration -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <!-- Scripts -->
     <script src="supabase.js"></script>
-    <!-- Link to script.js -->
     <script src="script.js"></script>
+    
+    <style>
+        /* Pulse Animation */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
 </body>
 </html>
