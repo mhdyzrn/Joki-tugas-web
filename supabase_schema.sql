@@ -1,6 +1,6 @@
 -- ============================================================
--- SUPABASE DATABASE SCHEMA FOR NETLIFY DEPLOYED APPLICATIONS
--- Project: TugasBeres (joki-tugas-web) & E-Modul Akidah Akhlak
+-- SUPABASE DATABASE SCHEMA FOR NETLIFY DEPLOYMENT
+-- Project: TugasBeres (joki-tugas-web)
 -- ============================================================
 
 -- 1. Create Table: `orders`
@@ -38,22 +38,10 @@ CREATE TABLE IF NOT EXISTS public.testimonials (
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- 4. Create Table: `quiz_results` (For E-Modul Akidah Akhlak)
-CREATE TABLE IF NOT EXISTS public.quiz_results (
-    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-    student_name TEXT NOT NULL,
-    student_class TEXT DEFAULT 'Kelas VII / VIII',
-    score INT NOT NULL,
-    total_questions INT NOT NULL,
-    certificate_id TEXT,
-    completed_at TIMESTAMPTZ DEFAULT NOW()
-);
-
 -- Enable Row Level Security (RLS)
 ALTER TABLE public.orders ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.plagiarism_scans ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.testimonials ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.quiz_results ENABLE ROW LEVEL SECURITY;
 
 -- Create Policies for Anonymous Public Access (Insert & Select)
 CREATE POLICY "Allow public insert to orders" ON public.orders
@@ -71,14 +59,8 @@ CREATE POLICY "Allow public select approved testimonials" ON public.testimonials
 CREATE POLICY "Allow public insert to testimonials" ON public.testimonials
     FOR INSERT WITH CHECK (true);
 
-CREATE POLICY "Allow public insert quiz results" ON public.quiz_results
-    FOR INSERT WITH CHECK (true);
-
-CREATE POLICY "Allow public select quiz results" ON public.quiz_results
-    FOR SELECT USING (true);
-
 -- Insert Sample Testimonials
 INSERT INTO public.testimonials (client_name, client_role, comment, rating, approved) VALUES
 ('Rizky Pratama', 'Mahasiswa Universitas Nurul Huda', 'Sangat membantu pengerjaan proposal skripsi PAI! Hasil rapi, pembahasan mendalam, dan bebas plagiasi.', 5, true),
 ('Siti Nurhaliza', 'Mahasiswi PGMI', 'Respon sangat cepat, analisis data SPSS lengkap dengan penjelasan output & tabel.', 5, true),
-('Ahmad Fauzi', 'Guru PAI SMP', 'E-Modul interaktif sangat memfasilitasi media pembelajaran digital siswa.', 5, true);
+('Ahmad Fauzi', 'Mahasiswa Teknik', 'Pengerjaan makalah & PPT sangat bagus dan cepat.', 5, true);
