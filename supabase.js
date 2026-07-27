@@ -1,9 +1,9 @@
 /**
- * Supabase Database Integration for TugasBeres & Web Applications
+ * Supabase Database Integration for TugasBeres
  * Connects directly to Supabase Postgres backend database.
  */
 
-// Supabase Configuration - Set your keys via environment variables or window config
+// Supabase Configuration
 const SUPABASE_URL = window.SUPABASE_URL || "https://ctzwszzdmkotsoiymkzx.supabase.co";
 const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || "sb_publishable_EoOpmvGJMYTkB-IbYlgRXw_kl-wzZJ_";
 
@@ -107,32 +107,91 @@ async function fetchTestimonialsFromSupabase() {
     }
 }
 
+// ============================================================
+// 👑 ADMIN DASHBOARD FUNCTIONS
+// ============================================================
+
 /**
- * Submit New Testimonial to Supabase
+ * Fetch All Orders for Admin Panel
  */
-async function submitTestimonialToSupabase(name, role, comment, rating = 5) {
+async function fetchAllAdminOrders() {
+    const db = getSupabaseClient();
+    if (!db) return [];
+
+    try {
+        const { data, error } = await db
+            .from('orders')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+        return data || [];
+    } catch (err) {
+        console.error("❌ Admin fetch orders error:", err.message);
+        return [];
+    }
+}
+
+/**
+ * Update Order Details (Status, Payment, File URL)
+ */
+async function updateOrderDetails(orderId, updateData) {
+    const db = getSupabaseClient();
+    if (!db) return { success: false };
+
+    try {
+        const { data, error } = await db
+            .from('orders')
+            .update(updateData)
+            .eq('id', orderId);
+
+        if (error) throw error;
+        return { success: true, data };
+    } catch (err) {
+        console.error("❌ Admin update order error:", err.message);
+        return { success: false, error: err.message };
+    }
+}
+
+/**
+ * Delete Order from Admin Panel
+ */
+async function deleteOrderFromAdmin(orderId) {
     const db = getSupabaseClient();
     if (!db) return false;
 
     try {
-        const { data, error } = await db
-            .from('testimonials')
-            .insert([
-                {
-                    client_name: name,
-                    client_role: role,
-                    comment: comment,
-                    rating: rating,
-                    approved: true, // auto approve or false for moderation
-                    created_at: new Date().toISOString()
-                }
-            ]);
+        const { error } = await db
+            .from('orders')
+            .delete()
+            .eq('id', orderId);
 
         if (error) throw error;
         return true;
     } catch (err) {
-        console.error("❌ Error submitting testimonial:", err.message);
+        console.error("❌ Admin delete order error:", err.message);
         return false;
+    }
+}
+
+/**
+ * Fetch All Plagiarism Scans for Admin Panel
+ */
+async function fetchAllAdminPlagScans() {
+    const db = getSupabaseClient();
+    if (!db) return [];
+
+    try {
+        const { data, error } = await db
+            .from('plagiarism_scans')
+            .select('*')
+            .order('created_at', { ascending: false })
+            .limit(20);
+
+        if (error) throw error;
+        return data || [];
+    } catch (err) {
+        return [];
     }
 }
 

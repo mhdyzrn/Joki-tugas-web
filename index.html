@@ -663,11 +663,14 @@
             <span>&copy; 2026 TugasBeres. All rights reserved.</span>
             <span>Made for EAS PGMI & Sekolah Dasar</span>
         </div>
-        <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--footer-border); text-align: center;">
+        <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--footer-border); text-align: center; display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
             <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #10b981; background: rgba(16, 185, 129, 0.08); padding: 8px 18px; border-radius: 50px; border: 1px solid rgba(16, 185, 129, 0.2);">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                 🔒 Terenkripsi SSL 256-bit & Jaminan 100% Kerahasiaan Identitas Klien
             </span>
+            <button onclick="openAdminModal()" style="background: rgba(139, 92, 246, 0.12); color: var(--primary-light); border: 1px solid rgba(139, 92, 246, 0.3); padding: 8px 16px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.2s;">
+                👑 Panel Admin
+            </button>
         </div>
     </footer>
 
@@ -693,6 +696,89 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             <span>Plagiasi</span>
         </a>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 👑 ADMIN DASHBOARD MODAL TEMPLATE -->
+    <!-- ============================================================ -->
+    <div id="admin-modal" class="modal-overlay hidden">
+        <div class="modal-card modal-card-large">
+            <button class="modal-close-btn" onclick="closeAdminModal()">&times;</button>
+            
+            <!-- Admin Login Security Screen -->
+            <div id="admin-auth-screen" class="admin-auth-box">
+                <div style="font-size: 3rem; margin-bottom: 10px;">👑</div>
+                <h3>Masuk Panel Admin TugasBeres</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 20px;">Masukkan PIN / Kata Sandi Rahasia Admin untuk membuka dashboard kelola pesanan.</p>
+                <div class="input-group" style="max-width: 300px; margin: 0 auto 15px auto;">
+                    <input type="password" id="admin-pin-input" placeholder="Masukkan PIN Admin" style="text-align: center; font-size: 1.2rem; letter-spacing: 4px;">
+                </div>
+                <button class="btn-primary" onclick="verifyAdminPin()" style="padding: 12px 30px; border-radius: 12px;">Masuk Dashboard Admin</button>
+            </div>
+
+            <!-- Admin Main Dashboard Panel (Hidden until authenticated) -->
+            <div id="admin-main-panel" class="hidden">
+                <div class="admin-panel-header">
+                    <div>
+                        <h2>👑 Dashboard Kendali Admin</h2>
+                        <p style="font-size:0.85rem; color:var(--text-secondary);">Kelola pesanan masuk, ubah status pengerjaan, dan atur berkas download tugas.</p>
+                    </div>
+                    <button class="btn-logout" onclick="lockAdminPanel()">🔒 Kunci Panel</button>
+                </div>
+
+                <!-- Admin Metrics Stats Cards -->
+                <div class="admin-stats-grid">
+                    <div class="admin-stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-num" id="stat-total-orders">0</div>
+                        <div class="stat-label">Total Pesanan</div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="stat-icon">⏳</div>
+                        <div class="stat-num" id="stat-pending-orders">0</div>
+                        <div class="stat-label">Pesanan Pending</div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-num" id="stat-completed-orders">0</div>
+                        <div class="stat-label">Pesanan Selesai</div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="stat-icon">🔍</div>
+                        <div class="stat-num" id="stat-plag-scans">0</div>
+                        <div class="stat-label">Log Cek Plagiasi</div>
+                    </div>
+                </div>
+
+                <!-- Admin Filter Tabs -->
+                <div class="admin-filter-bar">
+                    <button class="admin-filter-btn active" onclick="filterAdminOrders('all')">Semua Pesanan</button>
+                    <button class="admin-filter-btn" onclick="filterAdminOrders('pending')">⏳ Pending</button>
+                    <button class="admin-filter-btn" onclick="filterAdminOrders('processing')">⚙️ Pengerjaan</button>
+                    <button class="admin-filter-btn" onclick="filterAdminOrders('completed')">✅ Selesai</button>
+                </div>
+
+                <!-- Admin Orders Table -->
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>Layanan & Topik</th>
+                                <th>Volume & Tenggat</th>
+                                <th>Tarif</th>
+                                <th>Status</th>
+                                <th>Berkas Result</th>
+                                <th>Aksi Admin</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-orders-tbody">
+                            <!-- Dynamically injected admin orders -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Supabase Database SDK & Integration -->

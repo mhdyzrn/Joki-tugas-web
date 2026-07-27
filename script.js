@@ -560,3 +560,177 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// ============================================================
+// 👑 ADMIN DASHBOARD CONTROLLERS
+// ============================================================
+
+let allCachedAdminOrders = [];
+
+function openAdminModal() {
+    document.getElementById('admin-modal').classList.remove('hidden');
+    
+    // Check if session is already authenticated
+    const isAdminAuth = sessionStorage.getItem('admin_authenticated');
+    if (isAdminAuth === 'true') {
+        document.getElementById('admin-auth-screen').classList.add('hidden');
+        document.getElementById('admin-main-panel').classList.remove('hidden');
+        loadAdminDashboardData();
+    } else {
+        document.getElementById('admin-auth-screen').classList.remove('hidden');
+        document.getElementById('admin-main-panel').classList.add('hidden');
+    }
+}
+
+function closeAdminModal() {
+    document.getElementById('admin-modal').classList.add('hidden');
+}
+
+function verifyAdminPin() {
+    const pin = document.getElementById('admin-pin-input').value.trim();
+    // Default PIN: admin123
+    if (pin === 'admin123' || pin === 'admin') {
+        sessionStorage.setItem('admin_authenticated', 'true');
+        document.getElementById('admin-auth-screen').classList.add('hidden');
+        document.getElementById('admin-main-panel').classList.remove('hidden');
+        loadAdminDashboardData();
+    } else {
+        alert("❌ PIN Admin Salah! Silakan coba lagi.");
+        document.getElementById('admin-pin-input').value = "";
+    }
+}
+
+function lockAdminPanel() {
+    sessionStorage.removeItem('admin_authenticated');
+    document.getElementById('admin-auth-screen').classList.remove('hidden');
+    document.getElementById('admin-main-panel').classList.add('hidden');
+}
+
+async function loadAdminDashboardData() {
+    if (typeof fetchAllAdminOrders !== 'function') return;
+
+    const orders = await fetchAllAdminOrders();
+    allCachedAdminOrders = orders;
+    const scans = typeof fetchAllAdminPlagScans === 'function' ? await fetchAllAdminPlagScans() : [];
+
+    // Calculate metrics
+    const totalOrders = orders.length;
+    const pendingOrders = orders.filter(o => o.status === 'pending').length;
+    const completedOrders = orders.filter(o => o.status === 'completed').length;
+    const totalScans = scans.length;
+
+    document.getElementById('stat-total-orders').innerText = totalOrders;
+    document.getElementById('stat-pending-orders').innerText = pendingOrders;
+    document.getElementById('stat-completed-orders').innerText = completedOrders;
+    document.getElementById('stat-plag-scans').innerText = totalScans;
+
+    renderAdminOrdersTable(orders);
+}
+
+function filterAdminOrders(filterType) {
+    const filterBtns = document.querySelectorAll('.admin-filter-btn');
+    filterBtns.forEach(btn => btn.classList.remove('active'));
+
+    const activeBtn = Array.from(filterBtns).find(b => b.innerText.toLowerCase().includes(filterType));
+    if (activeBtn) activeBtn.classList.add('active');
+
+    if (filterType === 'all') {
+        renderAdminOrdersTable(allCachedAdminOrders);
+    } else {
+        const filtered = allCachedAdminOrders.filter(o => o.status === filterType);
+        renderAdminOrdersTable(filtered);
+    }
+}
+
+function renderAdminOrdersTable(orders) {
+    const tbody = document.getElementById('admin-orders-tbody');
+    if (!orders || orders.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="7" style="text-align:center; padding:30px; color:var(--text-secondary);">
+                    📁 Belum ada data pesanan masuk.
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
+    let html = '';
+    orders.forEach(ord => {
+        const dateStr = new Date(ord.created_at).toLocaleDateString('id-ID', {
+            day: '2-digit', month: 'short', year: 'numeric'
+        });
+
+        const fileInputVal = ord.file_url || '';
+
+        html += `
+            <tr>
+                <td>${dateStr}</td>
+                <td>
+                    <strong>${escapeHtml(ord.service_name)}</strong><br>
+                    <span style="font-size:0.8rem; color:var(--text-secondary);">${escapeHtml(ord.subject)}</span>
+                </td>
+                <td>
+                    ${escapeHtml(ord.quantity_text)}<br>
+                    <span style="font-size:0.8rem; color:#f59e0b;">⏱️ ${escapeHtml(ord.deadline)}</span>
+                </td>
+                <td><strong style="color:#10b981;">${escapeHtml(ord.total_price)}</strong></td>
+                <td>
+                    <select class="status-select" onchange="handleAdminStatusChange('${ord.id}', this.value)">
+                        <option value="pending" ${ord.status === 'pending' ? 'selected' : ''}>⏳ Pending</option>
+                        <option value="processing" ${ord.status === 'processing' ? 'selected' : ''}>⚙️ Pengerjaan</option>
+                        <option value="completed" ${ord.status === 'completed' ? 'selected' : ''}>✅ Selesai & Lunas</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" placeholder="Link Berkas / Drive" value="${fileInputVal}" 
+                        style="padding:6px 10px; font-size:0.8rem; width:150px;" 
+                        onchange="handleAdminFileChange('${ord.id}', this.value)">
+                </td>
+                <td>
+                    <button class="btn-admin-action" onclick="handleAdminDeleteOrder('${ord.id}')">🗑️ Hapus</button>
+                </td>
+            </tr>
+        `;
+    });
+
+    tbody.innerHTML = html;
+}
+
+async function handleAdminStatusChange(orderId, newStatus) {
+    if (typeof updateOrderDetails !== 'function') return;
+
+    const isPaid = newStatus === 'completed';
+    const res = await updateOrderDetails(orderId, { status: newStatus, is_paid: isPaid });
+    if (res.success) {
+        console.log(`Status order ${orderId} updated to ${newStatus}`);
+        loadAdminDashboardData();
+    } else {
+        alert("Gagal mengupdate status pesanan.");
+    }
+}
+
+async function handleAdminFileChange(orderId, newFileUrl) {
+    if (typeof updateOrderDetails !== 'function') return;
+
+    const res = await updateOrderDetails(orderId, { file_url: newFileUrl });
+    if (res.success) {
+        alert("✅ Link berkas tugas berhasil disimpan ke database!");
+    } else {
+        alert("Gagal menyimpan link berkas.");
+    }
+}
+
+async function handleAdminDeleteOrder(orderId) {
+    if (!confirm("Apakah Anda yakin ingin menghapus pesanan ini?")) return;
+
+    if (typeof deleteOrderFromAdmin === 'function') {
+        const ok = await deleteOrderFromAdmin(orderId);
+        if (ok) {
+            loadAdminDashboardData();
+        } else {
+            alert("Gagal menghapus pesanan.");
+        }
+    }
+}
+
