@@ -13,27 +13,53 @@
     <meta property="og:description" content="Solusi cepat, bebas plagiasi, dan terpercaya untuk tugas sekolah & kuliah Anda.">
     <meta property="og:image" content="preview-image.jpg">
 
-    <link rel="stylesheet" href="landwind.css?v=2.0">
-    <link rel="stylesheet" href="style.css?v=2.0">
+    <!-- Tailwind CDN for real-time JIT compilation of all utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              purple: {
+                50: '#f5f3ff',
+                100: '#ede9fe',
+                200: '#ddd6fe',
+                300: '#c4b5fd',
+                400: '#a78bfa',
+                500: '#8b5cf6',
+                600: '#7c3aed',
+                700: '#6d28d9',
+                800: '#5b21b6',
+                900: '#4c1d95',
+              }
+            }
+          }
+        }
+      }
+    </script>
+
+    <link rel="stylesheet" href="landwind.css?v=3.0">
+    <link rel="stylesheet" href="style.css?v=3.0">
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white font-sans antialiased pb-16 lg:pb-0">
 
     <!-- Announcement Bar -->
-    <div class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-xs sm:text-sm font-medium text-center py-2 px-4 shadow-sm">
-        🎉 <span>PROMO PELANGGAN BARU: Diskon 10% untuk Pemesanan Pertama! Centang kotak di kalkulator tarif.</span>
+    <div class="bg-gradient-to-r from-purple-700 to-indigo-700 text-white text-xs sm:text-sm font-semibold text-center py-2 px-4 shadow-sm flex items-center justify-center space-x-2">
+        <span>✨ PROMO PELANGGAN BARU: Diskon 10% untuk Pemesanan Pertama! Centang kotak di kalkulator tarif.</span>
     </div>
 
     <!-- Header / Navbar -->
     <header class="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
         <nav class="max-w-screen-xl px-4 py-3 mx-auto flex items-center justify-between">
-            <a href="#hero" class="flex items-center space-x-2 text-xl font-bold text-purple-700 dark:text-purple-400">
-                <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <a href="#hero" class="flex items-center space-x-2 text-xl font-extrabold text-purple-700 dark:text-purple-400">
+                <svg class="w-7 h-7 text-purple-600 dark:text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 <span>TugasBeres</span>
             </a>
 
             <!-- Desktop Nav Links -->
-            <div class="hidden lg:flex items-center space-x-6 text-sm font-medium text-gray-700 dark:text-gray-300">
+            <div class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-gray-700 dark:text-gray-300">
                 <a href="#hero" class="hover:text-purple-600 dark:hover:text-purple-400 transition">Beranda</a>
                 <a href="#services" class="hover:text-purple-600 dark:hover:text-purple-400 transition">Layanan</a>
                 <a href="#calculator" class="hover:text-purple-600 dark:hover:text-purple-400 transition">Kalkulator</a>
@@ -45,7 +71,7 @@
 
             <!-- Header Actions -->
             <div class="flex items-center space-x-3">
-                <a href="https://wa.me/6282279765039?text=Halo%20TugasBeres,%20saya%20ingin%20tanya%20jasa%20tugas." target="_blank" class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none transition">
+                <a href="https://wa.me/6282279765039?text=Halo%20TugasBeres,%20saya%20ingin%20tanya%20jasa%20tugas." target="_blank" class="text-white bg-purple-700 hover:bg-purple-800 font-bold rounded-lg text-sm px-4 py-2 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none transition shadow-sm">
                     Hubungi WA
                 </a>
                 <button data-collapse-toggle="mobile-menu" type="button" class="lg:hidden text-gray-500 hover:text-gray-700 dark:text-gray-400 p-2 rounded-lg focus:outline-none">
@@ -55,8 +81,8 @@
         </nav>
 
         <!-- Mobile Menu Accordion -->
-        <div class="hidden lg:hidden border-t border-gray-100 dark:border-gray-800" id="mobile-menu">
-            <div class="px-4 py-3 space-y-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+        <div class="hidden lg:hidden border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900" id="mobile-menu">
+            <div class="px-4 py-3 space-y-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
                 <a href="#hero" class="block py-1 hover:text-purple-600">Beranda</a>
                 <a href="#services" class="block py-1 hover:text-purple-600">Layanan</a>
                 <a href="#calculator" class="block py-1 hover:text-purple-600">Kalkulator Tarif</a>
@@ -69,24 +95,26 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-white dark:bg-gray-900 py-12 lg:py-20" id="hero">
+    <section class="bg-white dark:bg-gray-900 py-10 lg:py-16" id="hero">
         <div class="max-w-screen-xl px-4 mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div class="lg:col-span-7">
-                <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold text-purple-700 bg-purple-100 rounded-full dark:bg-purple-900/40 dark:text-purple-300">
+                <span class="inline-block px-3 py-1 mb-4 text-xs font-bold text-purple-700 bg-purple-100 rounded-full dark:bg-purple-900/40 dark:text-purple-300">
                     🚀 Solusi Cepat Akademik Anda
                 </span>
                 <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-tight mb-4">
                     Tugas Menumpuk? <br><span class="text-purple-600 dark:text-purple-400">Biar Kami yang Selesaikan!</span>
                 </h1>
-                <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
                     Bantuan pengerjaan tugas sekolah, kuliah, proposal penelitian, olah data statistik SPSS, penulisan makalah, PPT presentasi, hingga e-modul pembelajaran dengan kualitas orisinal, bebas plagiasi, dan tepat waktu.
                     <span class="block mt-2 text-xs text-gray-500 dark:text-gray-500">*Layanan berupa berkas digital (soft file), tidak termasuk cetak kertas fisik/hard copy.</span>
                 </p>
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <a href="#calculator" class="text-white bg-purple-700 hover:bg-purple-800 font-semibold rounded-lg text-sm px-6 py-3.5 text-center shadow-lg shadow-purple-500/20 transition">
+                
+                <!-- Hero Action Buttons -->
+                <div class="hero-buttons-container flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                    <a href="#calculator" class="w-full sm:w-auto text-white bg-purple-700 hover:bg-purple-800 font-bold rounded-xl text-sm px-6 py-3.5 text-center shadow-lg shadow-purple-500/20 transition">
                         Hitung Tarif Sekarang
                     </a>
-                    <a href="#services" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-50 font-semibold rounded-lg text-sm px-6 py-3.5 text-center dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 transition">
+                    <a href="#services" class="w-full sm:w-auto text-gray-900 bg-gray-100 border border-gray-300 hover:bg-gray-200 font-bold rounded-xl text-sm px-6 py-3.5 text-center dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 transition">
                         Lihat Layanan
                     </a>
                 </div>
@@ -112,7 +140,7 @@
                 <p class="text-gray-600 dark:text-gray-400">Pilih kategori layanan akademik yang sesuai dengan kebutuhan tugas Anda untuk melihat detail penawaran.</p>
             </div>
 
-            <!-- Services Grid (All 10 Services) -->
+            <!-- Services Grid (All 10 Services, 1 col mobile, 2 tablet, 3 desktop) -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid">
                 
                 <!-- Card 1 -->
@@ -120,7 +148,7 @@
                     <div>
                         <div class="text-3xl mb-3">📝</div>
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Makalah & Paper</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Penyusunan makalah ilmiah sistematis, tugas mandiri, review jurnal, dan paper akademik untuk tingkat sekolah maupun kuliah.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">Penyusunan makalah ilmiah sistematis, tugas mandiri, review jurnal, dan paper akademik untuk tingkat sekolah maupun kuliah.</p>
                         <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1 mb-4">
                             <li>✓ Referensi Buku & Jurnal</li>
                             <li>✓ Format Rapi & Terstruktur</li>
@@ -137,7 +165,7 @@
                     <div>
                         <div class="text-3xl mb-3">🎓</div>
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Proposal & Skripsi</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Penyusunan draf proposal skripsi (Bab 1-3) hingga tugas akhir lengkap (Bab 1-5), metodologi kualitatif/kuantitatif, dan garansi revisi.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">Penyusunan draf proposal skripsi (Bab 1-3) hingga tugas akhir lengkap (Bab 1-5), metodologi kualitatif/kuantitatif, dan garansi revisi.</p>
                         <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1 mb-4">
                             <li>✓ Proposal (Bab 1-3) & Skripsi (Bab 1-5)</li>
                             <li>✓ Metode Kualitatif / Kuantitatif / PTK</li>
@@ -154,7 +182,7 @@
                     <div>
                         <div class="text-3xl mb-3">✍️</div>
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Esai Ilmiah & Opini</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Penulisan esai kritis akademis, esai opini populer, esai reflektif, atau naskah kompetisi esai dengan argumen tajam.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">Penulisan esai kritis akademis, esai opini populer, esai reflektif, atau naskah kompetisi esai dengan argumen tajam.</p>
                         <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1 mb-4">
                             <li>✓ Gagasan Kreatif & Orisinal</li>
                             <li>✓ Sitasi APA 7th / Harvard</li>
@@ -171,7 +199,7 @@
                     <div>
                         <div class="text-3xl mb-3">📊</div>
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Analisis Data SPSS</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Olah data statistik, uji instrumen (Validitas & Reliabilitas), uji asumsi klasik, analisis korelasi, regresi, t-test, anova, dll.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">Olah data statistik, uji instrumen (Validitas & Reliabilitas), uji asumsi klasik, analisis korelasi, regresi, t-test, anova, dll.</p>
                         <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1 mb-4">
                             <li>✓ File Data & Output SPSS</li>
                             <li>✓ Interpretasi & Pembahasan</li>
@@ -188,7 +216,7 @@
                     <div>
                         <div class="text-3xl mb-3">💻</div>
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Slide Presentasi PPT</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Desain slide presentasi Powerpoint, Google Slides, atau Canva premium dengan visualisasi data, infografis, dan layout estetik.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">Desain slide presentasi Powerpoint, Google Slides, atau Canva premium dengan visualisasi data, infografis, dan layout estetik.</p>
                         <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1 mb-4">
                             <li>✓ Desain Kustom Non-Template</li>
                             <li>✓ Infografis & Visual Menarik</li>
@@ -205,7 +233,7 @@
                     <div>
                         <div class="text-3xl mb-3">📖</div>
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">E-Modul & LKS</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Desain modul ajar digital, Lembar Kerja Siswa (LKS), ringkasan bahan ajar sekolah dasar hingga menengah dengan tata letak profesional.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">Desain modul ajar digital, Lembar Kerja Siswa (LKS), ringkasan bahan ajar sekolah dasar hingga menengah dengan tata letak profesional.</p>
                         <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1 mb-4">
                             <li>✓ Layout Desain Premium</li>
                             <li>✓ File PDF & E-Book Ready</li>
@@ -222,7 +250,7 @@
                     <div>
                         <div class="text-3xl mb-3">🔬</div>
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Laporan Praktikum / KKN</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Penyusunan laporan akhir kegiatan KKN, KKL, magang kerja, atau laporan praktikum laboratorium sains/teknik.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">Penyusunan laporan akhir kegiatan KKN, KKL, magang kerja, atau laporan praktikum laboratorium sains/teknik.</p>
                         <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1 mb-4">
                             <li>✓ Struktur Laporan Rapi</li>
                             <li>✓ Lampiran Data Teratur</li>
@@ -239,7 +267,7 @@
                     <div>
                         <div class="text-3xl mb-3">🎓</div>
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Evaluasi Akhir Semester (EAS)</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Bantuan penyusunan jawaban ujian take-home, tugas proyek akhir semester, naskah evaluasi, dan esai ujian UAS/EAS.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">Bantuan penyusunan jawaban ujian take-home, tugas proyek akhir semester, naskah evaluasi, dan esai ujian UAS/EAS.</p>
                         <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1 mb-4">
                             <li>✓ Sesuai Kisi-Kisi & Soal</li>
                             <li>✓ Analisis Kritis & Terstruktur</li>
@@ -256,7 +284,7 @@
                     <div>
                         <div class="text-3xl mb-3">📋</div>
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">RPP & Modul Ajar</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Penyusunan Rencana Pelaksanaan Pembelajaran (RPP) K13 atau Modul Ajar Kurikulum Merdeka lengkap dengan skenario dan penilaian.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">Penyusunan Rencana Pelaksanaan Pembelajaran (RPP) K13 atau Modul Ajar Kurikulum Merdeka lengkap dengan skenario dan penilaian.</p>
                         <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1 mb-4">
                             <li>✓ Kurikulum K13 / Merdeka</li>
                             <li>✓ Skenario Kegiatan Lengkap</li>
@@ -273,7 +301,7 @@
                     <div>
                         <div class="text-3xl mb-3">🗒️</div>
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Resume & Ringkasan</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Jasa meringkas materi kuliah, bab buku, ringkasan jurnal ilmiah, naskah video, atau artikel secara padat, jelas, dan terstruktur.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">Jasa meringkas materi kuliah, bab buku, ringkasan jurnal ilmiah, naskah video, atau artikel secara padat, jelas, dan terstruktur.</p>
                         <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1 mb-4">
                             <li>✓ Poin Penting & Intisari</li>
                             <li>✓ Bahasa Rapi & Padat</li>
@@ -575,7 +603,7 @@
                 <div class="p-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm flex flex-col justify-between">
                     <div>
                         <div class="flex text-yellow-400 mb-3">★★★★★</div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 italic mb-4">"Penulisan proposal penelitian Bab 1-3 rapi banget. Metodologinya sangat detail dan dikasih rujukan buku statistika terpercaya. Lolos seminar proposal tanpa banyak revisi!"</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 italic mb-4 leading-relaxed">"Penulisan proposal penelitian Bab 1-3 rapi banget. Metodologinya sangat detail dan dikasih rujukan buku statistika terpercaya. Lolos seminar proposal tanpa banyak revisi!"</p>
                     </div>
                     <div class="flex items-center space-x-3 pt-3 border-t border-gray-100 dark:border-gray-700">
                         <div class="w-9 h-9 rounded-full bg-purple-600 text-white font-bold text-xs flex items-center justify-center">AH</div>
@@ -590,7 +618,7 @@
                 <div class="p-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm flex flex-col justify-between">
                     <div>
                         <div class="flex text-yellow-400 mb-3">★★★★★</div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 italic mb-4">"Uji validitas dan reliabilitas instrumen dengan SPSS dikerjakan dalam waktu kurang dari 12 jam. Keren, dapet penjelasan cara bacanya lagi."</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 italic mb-4 leading-relaxed">"Uji validitas dan reliabilitas instrumen dengan SPSS dikerjakan dalam waktu kurang dari 12 jam. Keren, dapet penjelasan cara bacanya lagi."</p>
                     </div>
                     <div class="flex items-center space-x-3 pt-3 border-t border-gray-100 dark:border-gray-700">
                         <div class="w-9 h-9 rounded-full bg-purple-600 text-white font-bold text-xs flex items-center justify-center">AR</div>
@@ -605,7 +633,7 @@
                 <div class="p-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm flex flex-col justify-between">
                     <div>
                         <div class="flex text-yellow-400 mb-3">★★★★★</div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 italic mb-4">"Desain slide presentasi PPT-nya sangat modern dan estetik. Menjelaskan materi sulit jadi kelihatan gampang karena dikasih visual infografis."</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 italic mb-4 leading-relaxed">"Desain slide presentasi PPT-nya sangat modern dan estetik. Menjelaskan materi sulit jadi kelihatan gampang karena dikasih visual infografis."</p>
                     </div>
                     <div class="flex items-center space-x-3 pt-3 border-t border-gray-100 dark:border-gray-700">
                         <div class="w-9 h-9 rounded-full bg-purple-600 text-white font-bold text-xs flex items-center justify-center">BP</div>
@@ -630,23 +658,23 @@
             <div class="max-w-3xl mx-auto space-y-4">
                 <div class="p-5 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
                     <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">Apakah tugas saya dijamin bebas dari plagiat?</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Ya. Seluruh tugas tulis, makalah, proposal, dan esai ilmiah dikerjakan dari nol dan melalui proses penelusuran referensi yang ketat. Kami juga menyediakan lampiran hasil cek plagiasi Turnitin secara gratis jika diminta.</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Ya. Seluruh tugas tulis, makalah, proposal, dan esai ilmiah dikerjakan dari nol dan melalui proses penelusuran referensi yang ketat. Kami juga menyediakan lampiran hasil cek plagiasi Turnitin secara gratis jika diminta.</p>
                 </div>
                 <div class="p-5 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
                     <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">Bagaimana jika tugas yang dikerjakan butuh perbaikan (revisi)?</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Kami memberikan garansi revisi gratis sampai tugas Anda dinyatakan selesai, selama revisi tersebut tidak melenceng dari instruksi pengerjaan awal yang diberikan saat pemesanan.</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Kami memberikan garansi revisi gratis sampai tugas Anda dinyatakan selesai, selama revisi tersebut tidak melenceng dari instruksi pengerjaan awal yang diberikan saat pemesanan.</p>
                 </div>
                 <div class="p-5 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
                     <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">Bagaimana cara pembayaran jasanya?</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Kami menerima pembayaran melalui transfer Bank utama (BRI, BNI, BCA, Mandiri) serta berbagai dompet digital seperti ShopeePay, OVO, GoPay, dan Dana via QRIS. Pembayaran dapat berupa uang muka (DP 50%) terlebih dahulu.</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Kami menerima pembayaran melalui transfer Bank utama (BRI, BNI, BCA, Mandiri) serta berbagai dompet digital seperti ShopeePay, OVO, GoPay, dan Dana via QRIS. Pembayaran dapat berupa uang muka (DP 50%) terlebih dahulu.</p>
                 </div>
                 <div class="p-5 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
                     <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">Apakah kerahasiaan data saya terjamin?</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Tentu saja. Kami menjamin 100% kerahasiaan identitas nama, mata kuliah, maupun institusi asal Anda. File tugas Anda hanya akan dikirimkan kepada Anda secara pribadi.</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Tentu saja. Kami menjamin 100% kerahasiaan identitas nama, mata kuliah, maupun institusi asal Anda. File tugas Anda hanya akan dikirimkan kepada Anda secara pribadi.</p>
                 </div>
                 <div class="p-5 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
                     <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">Apakah hasil tugas dikirim dalam bentuk cetak fisik (hard copy)?</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Tidak. Kami hanya mengirimkan hasil pengerjaan tugas dalam bentuk file digital (soft file) seperti format Word (.docx), PDF, PowerPoint (.pptx), Excel (.xlsx), atau file data (.sav untuk SPSS). Kami tidak melayani pencetakan kertas fisik.</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Tidak. Kami hanya mengirimkan hasil pengerjaan tugas dalam bentuk file digital (soft file) seperti format Word (.docx), PDF, PowerPoint (.pptx), Excel (.xlsx), atau file data (.sav untuk SPSS). Kami tidak melayani pencetakan kertas fisik.</p>
                 </div>
             </div>
         </div>
@@ -657,7 +685,7 @@
         <div class="max-w-screen-xl px-4 mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div>
                 <a href="#hero" class="flex items-center space-x-2 text-2xl font-bold text-purple-400 mb-3">
-                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    <svg class="w-7 h-7 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                     <span>TugasBeres</span>
                 </a>
                 <p class="text-sm text-gray-400 max-w-md leading-relaxed">Solusi pengerjaan tugas sekolah dan kuliah secara profesional, cepat, aman, dan bergaransi revisi. Kepuasan akademis Anda adalah prioritas kami.</p>
@@ -680,23 +708,23 @@
 
     <!-- Fixed Mobile Bottom Navigation Bar -->
     <div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border-t border-gray-200 dark:border-gray-800 flex justify-around py-2 shadow-lg">
-        <a href="#hero" class="flex flex-col items-center text-[10px] font-medium text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400">
+        <a href="#hero" class="flex flex-col items-center text-[10px] font-semibold text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400">
             <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
             <span>Beranda</span>
         </a>
-        <a href="#services" class="flex flex-col items-center text-[10px] font-medium text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400">
+        <a href="#services" class="flex flex-col items-center text-[10px] font-semibold text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400">
             <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
             <span>Layanan</span>
         </a>
-        <a href="#calculator" class="flex flex-col items-center text-[10px] font-medium text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400">
+        <a href="#calculator" class="flex flex-col items-center text-[10px] font-semibold text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400">
             <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line></svg>
             <span>Kalkulator</span>
         </a>
-        <a href="#payment" class="flex flex-col items-center text-[10px] font-medium text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400">
+        <a href="#payment" class="flex flex-col items-center text-[10px] font-semibold text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400">
             <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
             <span>QRIS</span>
         </a>
-        <a href="#plagiarism" class="flex flex-col items-center text-[10px] font-medium text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400">
+        <a href="#plagiarism" class="flex flex-col items-center text-[10px] font-semibold text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400">
             <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             <span>Plagiasi</span>
         </a>
