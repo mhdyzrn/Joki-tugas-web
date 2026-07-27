@@ -5,7 +5,7 @@
 
 // Supabase Configuration - Set your keys via environment variables or window config
 const SUPABASE_URL = window.SUPABASE_URL || "https://ctzwszzdmkotsoiymkzx.supabase.co";
-const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || "your-anon-key-here";
+const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || "sb_publishable_EoOpmvGJMYTkB-IbYlgRXw_kl-wzZJ_";
 
 let supabaseClient = null;
 
