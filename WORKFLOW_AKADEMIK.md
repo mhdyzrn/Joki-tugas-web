@@ -49,16 +49,19 @@ Seluruh berkas dokumen (`.docx`) dan presentasi (`.pptx`) dibangun secara otomat
 ## 🌐 2. Aplikasi Web Interaktif (Frontend & Deployment)
 
 ### A. **TugasBeres Web (`joki-tugas-web`)**
-* **Teknologi**: HTML5, CSS3 Glassmorphism, Vanilla JavaScript.
+* **Teknologi**: HTML5, CSS3 Glassmorphism, Vanilla JavaScript, Supabase Client JS.
+* **Database Backend**: PostgreSQL via **Supabase Database** (Tabel `orders`, `plagiarism_scans`, `testimonials`).
 * **Fitur Utama**:
   * Landing Page Jasa Akademik Terintegrasi.
   * **Kalkulator Tarif Otomatis**: Mendukung estimasi biaya Proposal Skripsi & Tugas Akhir (Bab 1-5), SPSS, PPT, E-Modul, Esai, dan Makalah.
-  * **Tools Cek Plagiarisme & Orisinalitas Teks**: Visualisasi *score circle*, highlight kalimat terdeteksi, simulasi database Kemdikbud/PTN, dan konsultasi order *paraphrase* via WhatsApp.
-* **Deployment**: Terintegrasi CI/CD Netlify di [https://tugas-beres.netlify.app/](https://tugas-beres.netlify.app/).
+  * **Penyimpanan Pesanan Database**: Menyimpan riwayat pemesanan secara otomatis ke Supabase.
+  * **Tools Cek Plagiarisme & Log Database**: Visualisasi *score circle*, highlight kalimat terdeteksi, logging riwayat pengecekan ke Supabase, dan konsultasi order *paraphrase* via WhatsApp.
+* **Deployment & Hosting**: Terintegrasi CI/CD **Netlify** (File `netlify.toml`) di [https://tugas-beres.netlify.app/](https://tugas-beres.netlify.app/).
 
 ### B. **E-Modul Akidah Akhlak (`e-modul-akidah-akhlak`)**
-* **Teknologi**: Vite + React 19 + Lucide Icons + Tailwind / Vanilla CSS System.
-* **Fitur Utama**: E-Modul Digital PAI Akidah Akhlak Kelas VIII SMP (Fase D), LKPD Reflektif Interaktif, Kuis Sistem Pilihan Ganda & Sertifikat Kelulusan Digital, serta Panel Kendali Guru.
+* **Teknologi**: Vite + React 19 + Lucide Icons + Supabase SDK.
+* **Database Backend**: **Supabase Database** (Tabel `quiz_results`).
+* **Deployment**: Hosting **Netlify** dengan konfig SPA redirect & build script.
 
 ---
 

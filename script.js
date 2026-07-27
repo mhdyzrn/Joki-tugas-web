@@ -192,6 +192,18 @@ Mohon informasi mengenai ketersediaan slot pengerjaan dan detail pembayaran. Ter
     const encodedText = encodeURIComponent(text);
     const waUrl = `https://wa.me/${phone}?text=${encodedText}`;
     
+    // Save order data to Supabase database async
+    if (typeof saveOrderToSupabase === 'function') {
+        saveOrderToSupabase({
+            serviceName,
+            qtyText,
+            deadlineText,
+            subjectText,
+            totalPriceText,
+            promoClaimed: isPromoChecked
+        });
+    }
+
     if (isPromoChecked) {
         localStorage.setItem('promo_claimed', 'true');
     }
@@ -503,6 +515,17 @@ function displayPlagResults(text) {
             <td><span style="color:#f59e0b; font-weight:bold;">${citeScore}% Match</span></td>
         </tr>
     `;
+
+    // Log scan result to Supabase database
+    if (typeof savePlagiarismScanToSupabase === 'function') {
+        const words = text ? text.split(/\s+/).length : 0;
+        savePlagiarismScanToSupabase({
+            text,
+            wordCount: words,
+            origScore,
+            plagScore
+        });
+    }
 }
 
 function sendParaphraseOrder() {
