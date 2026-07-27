@@ -45,3 +45,17 @@
   background: var(--primary-color);
   cursor: pointer;
 }
+
+@media (max-width: 992px) {
+    .prices-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+@media (max-width: 768px) {
+    #plag-dashboard {
+        grid-template-columns: 1fr !important;
+    }
+    .hero {
+        padding-top: 100px !important;
+    }
+}
