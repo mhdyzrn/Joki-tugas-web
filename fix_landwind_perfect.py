@@ -13,7 +13,11 @@ html_content = """<!DOCTYPE html>
     <meta property="og:type" content="website">
     <meta property="og:title" content="Jasa Joki Tugas Profesional - TugasBeres">
     <meta property="og:description" content="Solusi cepat, bebas plagiasi, dan terpercaya untuk tugas sekolah & kuliah Anda.">
-    <meta property="og:image" content="preview-image.jpg">
+    <meta property="og:image" content="logo.jpg?v=20260728">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="logo.jpg?v=20260728">
+    <link rel="apple-touch-icon" href="logo.jpg?v=20260728">
 
     <!-- Tailwind CDN for real-time JIT compilation of all utility classes -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -59,8 +63,8 @@ html_content = """<!DOCTYPE html>
     <!-- Header / Navbar -->
     <header class="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
         <nav class="max-w-screen-xl px-4 py-3 mx-auto flex items-center justify-between">
-            <a href="#hero" class="flex items-center space-x-2 text-xl font-extrabold text-purple-700 dark:text-purple-400">
-                <svg class="w-7 h-7 text-purple-600 dark:text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <a href="#hero" class="flex items-center space-x-2.5 text-xl font-extrabold text-purple-700 dark:text-purple-400">
+                <img src="logo.jpg?v=20260728" alt="TugasBeres Logo" class="w-8 h-8 rounded-lg object-cover shadow-sm border border-purple-200 dark:border-purple-800">
                 <span>TugasBeres</span>
             </a>
 
@@ -850,8 +854,8 @@ html_content = """<!DOCTYPE html>
     <footer class="bg-gray-900 text-white pt-12 pb-8 border-t border-gray-800">
         <div class="max-w-screen-xl px-4 mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div>
-                <a href="#hero" class="flex items-center space-x-2 text-2xl font-bold text-purple-400 mb-3">
-                    <svg class="w-7 h-7 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <a href="#hero" class="flex items-center space-x-2.5 text-2xl font-bold text-purple-400 mb-3">
+                    <img src="logo.jpg?v=20260728" alt="TugasBeres Logo" class="w-9 h-9 rounded-lg object-cover shadow-sm border border-purple-800">
                     <span>TugasBeres</span>
                 </a>
                 <p class="text-sm text-gray-400 max-w-md leading-relaxed">Solusi pengerjaan tugas sekolah dan kuliah secara profesional, cepat, aman, dan bergaransi revisi sampai ACC (asal tidak keluar jalur dari brief awal). Kepuasan akademis Anda adalah prioritas utama kami.</p>
