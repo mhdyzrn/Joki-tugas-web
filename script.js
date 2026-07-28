@@ -185,6 +185,7 @@ function sendOrder() {
 - *Volume/Jumlah:* ${qtyText}
 - *Tenggat Waktu:* ${deadlineText}
 - *Mata Kuliah/Topik:* ${subjectText}${promoMsgText}
+- *Garansi:* 🛡️ Garansi Revisi Sampai ACC (Asal Tidak Keluar Jalur Brief Awal)
 - *Perkiraan Tarif:* ${totalPriceText}
 
 Mohon informasi mengenai ketersediaan slot pengerjaan dan detail pembayaran. Terima kasih!`;

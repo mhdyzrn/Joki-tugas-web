@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+# -*- coding: utf-8 -*-
+
+html_content = """<!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -901,3 +903,9 @@
     <script src="script.js"></script>
 </body>
 </html>
+"""
+
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("Successfully written perfect index.html")
