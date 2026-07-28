@@ -44,70 +44,70 @@ function updateCalc() {
     
     // Dynamically adjust slider limits and labels based on the service selected
     if (serviceVal === 'makalah') {
-        qtyLabel.innerText = "Jumlah Halaman";
+        if (qtyLabel) qtyLabel.innerText = "Jumlah Halaman";
         if (qtySlider.max !== "50" || qtySlider.min !== "1") {
             qtySlider.min = "1";
             qtySlider.max = "50";
             qtySlider.value = "5";
         }
     } else if (serviceVal === 'proposal') {
-        qtyLabel.innerText = "Jumlah Halaman Proposal / Skripsi";
+        if (qtyLabel) qtyLabel.innerText = "Jumlah Halaman Proposal / Skripsi";
         if (qtySlider.max !== "100" || qtySlider.min !== "5") {
             qtySlider.min = "5";
             qtySlider.max = "100";
             qtySlider.value = "15";
         }
     } else if (serviceVal === 'esai') {
-        qtyLabel.innerText = "Jumlah Halaman Esai";
+        if (qtyLabel) qtyLabel.innerText = "Jumlah Halaman Esai";
         if (qtySlider.max !== "30" || qtySlider.min !== "1") {
             qtySlider.min = "1";
             qtySlider.max = "30";
             qtySlider.value = "3";
         }
     } else if (serviceVal === 'spss') {
-        qtyLabel.innerText = "Jumlah Paket Analisis (Uji)";
+        if (qtyLabel) qtyLabel.innerText = "Jumlah Paket Analisis (Uji)";
         if (qtySlider.max !== "10" || qtySlider.min !== "1") {
             qtySlider.min = "1";
             qtySlider.max = "10";
             qtySlider.value = "2";
         }
     } else if (serviceVal === 'ppt') {
-        qtyLabel.innerText = "Jumlah Slide PPT";
+        if (qtyLabel) qtyLabel.innerText = "Jumlah Slide PPT";
         if (qtySlider.max !== "40" || qtySlider.min !== "1") {
             qtySlider.min = "1";
             qtySlider.max = "40";
             qtySlider.value = "10";
         }
     } else if (serviceVal === 'modul') {
-        qtyLabel.innerText = "Jumlah Halaman E-Modul";
+        if (qtyLabel) qtyLabel.innerText = "Jumlah Halaman E-Modul";
         if (qtySlider.max !== "50" || qtySlider.min !== "1") {
             qtySlider.min = "1";
             qtySlider.max = "50";
             qtySlider.value = "10";
         }
     } else if (serviceVal === 'laporan') {
-        qtyLabel.innerText = "Jumlah Halaman Laporan";
+        if (qtyLabel) qtyLabel.innerText = "Jumlah Halaman Laporan";
         if (qtySlider.max !== "40" || qtySlider.min !== "1") {
             qtySlider.min = "1";
             qtySlider.max = "40";
             qtySlider.value = "8";
         }
     } else if (serviceVal === 'eas') {
-        qtyLabel.innerText = "Jumlah Halaman Tugas EAS / UAS";
+        if (qtyLabel) qtyLabel.innerText = "Jumlah Halaman Tugas EAS / UAS";
         if (qtySlider.max !== "30" || qtySlider.min !== "1") {
             qtySlider.min = "1";
             qtySlider.max = "30";
             qtySlider.value = "5";
         }
     } else if (serviceVal === 'rpp') {
-        qtyLabel.innerText = "Jumlah Halaman RPP";
+        if (qtyLabel) qtyLabel.innerText = "Jumlah Halaman RPP";
         if (qtySlider.max !== "30" || qtySlider.min !== "1") {
             qtySlider.min = "1";
             qtySlider.max = "30";
             qtySlider.value = "5";
         }
     } else if (serviceVal === 'resume') {
-        qtyLabel.innerText = "Jumlah Halaman Resume";
+        if (qtyLabel) qtyLabel.innerText = "Jumlah Halaman Resume";
         if (qtySlider.max !== "40" || qtySlider.min !== "1") {
             qtySlider.min = "1";
             qtySlider.max = "40";
