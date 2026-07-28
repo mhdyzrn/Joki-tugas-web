@@ -199,3 +199,66 @@ async function fetchAllAdminPlagScans() {
 window.addEventListener('DOMContentLoaded', () => {
     getSupabaseClient();
 });
+
+/**
+ * Fetch All Testimonials for Admin Panel
+ */
+async function fetchAllAdminTestimonials() {
+    const db = getSupabaseClient();
+    if (!db) return [];
+
+    try {
+        const { data, error } = await db
+            .from('testimonials')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+        return data || [];
+    } catch (err) {
+        console.error("❌ Admin fetch testimonials error:", err.message);
+        return [];
+    }
+}
+
+/**
+ * Approve or Disapprove Testimonial
+ */
+async function updateTestimonialStatus(testimonialId, approvedState) {
+    const db = getSupabaseClient();
+    if (!db) return false;
+
+    try {
+        const { error } = await db
+            .from('testimonials')
+            .update({ approved: approvedState })
+            .eq('id', testimonialId);
+
+        if (error) throw error;
+        return true;
+    } catch (err) {
+        console.error("❌ Admin update testimonial error:", err.message);
+        return false;
+    }
+}
+
+/**
+ * Delete Testimonial
+ */
+async function deleteTestimonialFromAdmin(testimonialId) {
+    const db = getSupabaseClient();
+    if (!db) return false;
+
+    try {
+        const { error } = await db
+            .from('testimonials')
+            .delete()
+            .eq('id', testimonialId);
+
+        if (error) throw error;
+        return true;
+    } catch (err) {
+        console.error("❌ Admin delete testimonial error:", err.message);
+        return false;
+    }
+}
