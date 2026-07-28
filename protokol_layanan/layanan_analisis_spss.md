@@ -48,3 +48,24 @@
 - [x] Nilai $N$ pada tabel SPSS sesuai dengan jumlah responden nyata.
 - [x] Nilai signifikansi ($p$-value) konsisten di seluruh bab IV.
 - [x] Disertai panduan singkat cara membaca hasil statistik untuk persiapan sidang.
+
+
+---
+
+## 🤖 Protokol Anti-Deteksi AI Writing & Humanized Academic Voice
+- **Target AI Detector Benchmark**: Lolos uji AI Detector dengan skor **< 5% / 0% AI Generated Score** pada *Turnitin AI Detection, ZeroGPT, GPTZero, & Originality.ai*.
+- **Variasi Sintaksis & Ritme (*Burstiness & Perplexity*)**:
+  - Mengombinasikan secara dinamis antara kalimat pendek yang tegas dengan kalimat majemuk bertingkat.
+  - Hindari pola struktur paragraf yang seragam khas generasi AI mentah.
+- **Eliminasi Kata Kunci & Frasa Klise AI (AI Word Filter)**:
+  - **Dilarang keras** menggunakan frasa generator generik seperti:
+    - ❌ *"Dalam era globalisasi/digital yang kian berkembang saat ini..."*
+    - ❌ *"Penting untuk dicatat bahwa..."*
+    - ❌ *"Secara keseluruhan, dapat disimpulkan bahwa..."*
+    - ❌ *"Merupakan komponen kunci yang sangat vital..."*
+  - **Wajib menggunakan** transisi akademik alami:
+    - ✅ *"Berdasarkan bukti empiris di lapangan..."*
+    - ✅ *"Kenyataan ini mengindikasikan bahwa..."*
+    - ✅ *"Sejalan dengan temuan riset terdahulu..."*
+- **Integrasi Konteks Empiris & Data Spesifik**: Menyisipkan data riil, kasus lokal, kutipan langsung pakar, dan analisis kritis yang tidak dapat dihasilkan oleh generator AI generik.
+- **Jaminan Human-Written Guaranteed**: Setiap draf melalui audit dan penyuntingan manusia (*human-in-the-loop review*) sebelum penyerahan akhir.
